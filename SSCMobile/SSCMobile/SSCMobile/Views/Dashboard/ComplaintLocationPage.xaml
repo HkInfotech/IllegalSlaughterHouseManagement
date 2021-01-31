@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.ComplaintLocationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SSCMobile.Controls"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:templates="clr-namespace:SSCMobile.Templates"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <local:BindableMap
+                    HasZoomEnabled="True"
+                    MapClicked="BindableMap_MapClicked"
+                    MapPins="{Binding PinCollection}"
+                    MapPosition="{Binding MyPosition}"
+                    MapType="Street" />
+                <Button
+                    Padding="5"
+                    BackgroundColor="{StaticResource OrangeColor}"
+                    Command="{Binding SaveLocationSubmitCommand, Mode=TwoWay}"
+                    FontFamily="{StaticResource OpenSansBold}"
+                    IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                    Text="Save Location"
+                    TextColor="White"
+                    VerticalOptions="End" />
+            </StackLayout>
+
+            <local:ActivityProgressBar
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+            <templates:EmptyStateView EmptyStateTitle="{Binding EmptyStateTitle, Mode=TwoWay}" IsVisible="{Binding IsEmpty, Mode=TwoWay}" />
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+
+
+</ContentPage>

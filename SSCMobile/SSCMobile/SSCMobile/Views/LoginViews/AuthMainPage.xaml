@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.LoginViews.AuthMainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    ios:Page.UseSafeArea="true"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+
+        <StackLayout Grid.Row="0" Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="15*" />
+                </Grid.RowDefinitions>
+            </Grid>
+            <StackLayout
+                Grid.Row="0"
+                Padding="20"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Image
+                    HeightRequest="150"
+                    Source="http://clipart-library.com/new_gallery/35-358224_circle-frame-abstract-png.png"
+                    WidthRequest="150" />
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Label
+                    Margin="0,20,0,0"
+                    FontSize="Subtitle"
+                    HorizontalOptions="Center"
+                    Text="STOP SLAUGHTER CRUELTY"
+                    VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="2">
+                <Button
+                    Margin="10"
+                    Command="{Binding OnLoginClickCommand, Mode=TwoWay}"
+                    CornerRadius="20"
+                    IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                    Text="LOGIN" />
+            </StackLayout>
+            <StackLayout Grid.Row="3">
+                <Button
+                    Margin="10"
+                    CornerRadius="20"
+                    IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                    Text="REGISTER" />
+            </StackLayout>
+            <StackLayout
+                Grid.Row="4"
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                VerticalOptions="EndAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="Joint Venture Of ResQuark And FIAPO"
+                    VerticalOptions="End" />
+            </StackLayout>
+            <StackLayout
+                Grid.Row="5"
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                VerticalOptions="StartAndExpand">
+                <CheckBox IsChecked="{Binding IsPrivacyPolicyCheck}">
+                    <CheckBox.Behaviors>
+                        <prism:EventToCommandBehavior Command="{Binding OnPrivacyPolicyChangeCommand}" EventName="CheckedChanged" />
+                    </CheckBox.Behaviors>
+                </CheckBox>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="By Continue in you agree to our Terms and Condition and Privacy Policy"
+                    VerticalOptions="End" />
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

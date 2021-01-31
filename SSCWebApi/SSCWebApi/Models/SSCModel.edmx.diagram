@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b402d2ecd360474da88d73303df1186f" Name="Diagram1" ZoomLevel="83" >
+        <EntityTypeShape EntityType="SSCEntityModel.AspNetUsers" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SSCEntityModel.CityLows" Width="1.5" PointX="6" PointY="6.5" />
+        <EntityTypeShape EntityType="SSCEntityModel.Citys" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="SSCEntityModel.ComplaintImages" Width="1.5" PointX="5.25" PointY="9.75" />
+        <EntityTypeShape EntityType="SSCEntityModel.ComplaintsLows" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="SSCEntityModel.Lows" Width="1.5" PointX="3.75" PointY="13.875" />
+        <EntityTypeShape EntityType="SSCEntityModel.Species" Width="1.5" PointX="0.75" PointY="9.625" />
+        <AssociationConnector Association="SSCEntityModel.FK__CityLows__CityId__5AEE82B9" />
+        <AssociationConnector Association="SSCEntityModel.FK__CityLows__LowId__5BE2A6F2" />
+        <AssociationConnector Association="SSCEntityModel.FK__Complaint__LowId__6B24EA82" />
+        <EntityTypeShape EntityType="SSCEntityModel.Complaints" Width="1.5" PointX="3" PointY="3.25" />
+        <AssociationConnector Association="SSCEntityModel.FK__Complaint__UserI__619B8048" />
+        <AssociationConnector Association="SSCEntityModel.FK__Complaints__City__628FA481" />
+        <AssociationConnector Association="SSCEntityModel.FK__Complaint__Compl__6E01572D" />
+        <AssociationConnector Association="SSCEntityModel.FK__Complaint__Compl__6A30C649" />
+        <AssociationConnector Association="SSCEntityModel.FK__Complaint__Speci__6383C8BA" />
+        <EntityTypeShape EntityType="SSCEntityModel.AspNetRoles" Width="1.5" PointX="3.375" PointY="0.75" />
+        <AssociationConnector Association="SSCEntityModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="SSCEntityModel.ComplaintList" Width="1.5" PointX="8.375" PointY="4.75" />
+        <EntityTypeShape EntityType="SSCEntityModel.UserDetailWithRole" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

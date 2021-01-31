@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSCMobile.Templates.EmptyStateView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontAwesome="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="emptyView"
+    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+    AbsoluteLayout.LayoutFlags="All"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <StackLayout
+            Padding="16"
+            BackgroundColor="WhiteSmoke"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                HorizontalOptions="Center"
+                Spacing="4"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    FontFamily="{StaticResource FontAwesome}"
+                    FontSize="120"
+                    HorizontalOptions="Center"
+                    Text="{x:Static FontAwesome:IconFonts.ExclamationTriangle}"
+                    TextColor="Gray" />
+
+                <Label
+                    BindingContext="{x:Reference emptyView}"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding EmptyStateTitle}"
+                    TextColor="Gray" />
+
+                <Label
+                    BindingContext="{x:Reference emptyView}"
+                    FontSize="12"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding EmptyStateSubtitle}"
+                    TextColor="Gray" />
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

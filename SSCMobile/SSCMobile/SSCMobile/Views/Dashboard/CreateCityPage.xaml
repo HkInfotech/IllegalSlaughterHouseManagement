@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.CreateCityPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Converter="clr-namespace:SSCMobile.Converters"
+    xmlns:control="clr-namespace:SSCMobile.Controls"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:custom1="clr-namespace:SSCMobile.CustomControl"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    Title="Add city details"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:ValidationErrorConverter x:Key="ValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <AbsoluteLayout
+            BackgroundColor="Transparent"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Padding="5" Spacing="5">
+                    <Grid
+                        Padding="10"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+
+
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansSemiBold}"
+                            Text="City name" />
+                        <pancakeView:PancakeView
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65"
+                            IsEnabled="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            Glyph="{x:Static custom:IconFonts.City}"
+                                            Size="23"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+                                <custom1:CustomEntry
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    Placeholder="City name"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding CityName.Value, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <custom1:CustomEntry.Behaviors>
+                                        <prism:EventToCommandBehavior Command="{Binding ValidateCityNameCommand}" EventName="TextChanged" />
+                                    </custom1:CustomEntry.Behaviors>
+                                </custom1:CustomEntry>
+                            </Grid>
+                        </pancakeView:PancakeView>
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding CityName.Valid}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Text="{Binding CityName.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                            TextColor="IndianRed" />
+
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansSemiBold}"
+                            Text="Mail address of FIAPO" />
+                        <pancakeView:PancakeView
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesomeRegular}"
+                                            Glyph="{x:Static custom:IconFonts.Envelope}"
+                                            Size="30"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+                                <custom1:CustomEntry
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    Placeholder="Mail address of FIAPO"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding FCCIEmail.Value, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <custom1:CustomEntry.Behaviors>
+                                        <prism:EventToCommandBehavior Command="{Binding ValidateFCCIEmailCommand}" EventName="TextChanged" />
+                                    </custom1:CustomEntry.Behaviors>
+                                </custom1:CustomEntry>
+                            </Grid>
+                        </pancakeView:PancakeView>
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding FCCIEmail.Valid}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Text="{Binding FCCIEmail.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                            TextColor="IndianRed" />
+
+
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansSemiBold}"
+                            Text="Mail address of Municipal Corporation" />
+                        <pancakeView:PancakeView
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesomeRegular}"
+                                            Glyph="{x:Static custom:IconFonts.Envelope}"
+                                            Size="30"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+                                <custom1:CustomEntry
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    Placeholder="Mail address of Municipal Corporation"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding MCEmail.Value, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <custom1:CustomEntry.Behaviors>
+                                        <prism:EventToCommandBehavior Command="{Binding ValidateMCEmailCommand}" EventName="TextChanged" />
+                                    </custom1:CustomEntry.Behaviors>
+                                </custom1:CustomEntry>
+                            </Grid>
+                        </pancakeView:PancakeView>
+                        <Label
+                            Grid.Row="8"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding MCEmail.Valid}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Text="{Binding MCEmail.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                            TextColor="IndianRed" />
+
+                        <Label
+                            Grid.Row="9"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansSemiBold}"
+                            Text="Mail address of Admin" />
+                        <pancakeView:PancakeView
+                            Grid.Row="10"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesomeRegular}"
+                                            Glyph="{x:Static custom:IconFonts.Envelope}"
+                                            Size="30"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+                                <custom1:CustomEntry
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    Placeholder="Mail address of Admin"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding AdminEmail.Value, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <custom1:CustomEntry.Behaviors>
+                                        <prism:EventToCommandBehavior Command="{Binding ValidateAdminEmailCommand}" EventName="TextChanged" />
+                                    </custom1:CustomEntry.Behaviors>
+                                </custom1:CustomEntry>
+                            </Grid>
+                        </pancakeView:PancakeView>
+
+                        <Label
+                            Grid.Row="11"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding AdminEmail.Valid}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Text="{Binding AdminEmail.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                            TextColor="IndianRed" />
+
+
+
+                        <Label
+                            Grid.Row="12"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansSemiBold}"
+                            Text="Mobile number of Admin" />
+                        <pancakeView:PancakeView
+                            Grid.Row="13"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Glyph="{x:Static custom:IconFonts.Mobile}"
+                                            Size="30"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+                                <custom1:CustomEntry
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    Keyboard="Numeric"
+                                    Placeholder="Admin Mobile number"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding MobileNumber.Value, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <custom1:CustomEntry.Behaviors>
+                                        <prism:EventToCommandBehavior Command="{Binding ValidateMobileNumberCommand}" EventName="TextChanged" />
+                                    </custom1:CustomEntry.Behaviors>
+                                </custom1:CustomEntry>
+                            </Grid>
+                        </pancakeView:PancakeView>
+
+                        <Label
+                            Grid.Row="14"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding MobileNumber.Valid}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Text="{Binding MobileNumber.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                            TextColor="IndianRed" />
+
+
+
+                        <Label
+                            Grid.Row="15"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansSemiBold}"
+                            Text="Name of Admin" />
+
+                        <pancakeView:PancakeView
+                            Grid.Row="16"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            Glyph="{x:Static custom:IconFonts.User}"
+                                            Size="30"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+                                <custom1:CustomEntry
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    Placeholder="Name"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding UserName.Value}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <custom1:CustomEntry.Behaviors>
+                                        <prism:EventToCommandBehavior Command="{Binding ValidateUserNameCommand}" EventName="TextChanged" />
+                                    </custom1:CustomEntry.Behaviors>
+                                </custom1:CustomEntry>
+                            </Grid>
+                        </pancakeView:PancakeView>
+                        <Label
+                            Grid.Row="17"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding UserName.Valid}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Text="{Binding UserName.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+
+
+                        <Label
+                            Grid.Row="18"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansSemiBold}"
+                            Text="Password" />
+                        <pancakeView:PancakeView
+                            Grid.Row="19"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            Glyph="{x:Static custom:IconFonts.Lock}"
+                                            Size="30"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+                                <custom1:CustomEntry
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    IsPassword="True"
+                                    Keyboard="Default"
+                                    Placeholder="Password"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding UserPassword.Value}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <custom1:CustomEntry.Behaviors>
+                                        <prism:EventToCommandBehavior Command="{Binding ValidatePasswordCommand}" EventName="TextChanged" />
+                                    </custom1:CustomEntry.Behaviors>
+                                </custom1:CustomEntry>
+                            </Grid>
+                        </pancakeView:PancakeView>
+
+                        <Label
+                            Grid.Row="20"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding UserPassword.Valid}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Text="{Binding UserPassword.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+
+
+                        <Label
+                            Grid.Row="21"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansSemiBold}"
+                            Text="Confirm Password" />
+                        <pancakeView:PancakeView
+                            Grid.Row="22"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            Glyph="{x:Static custom:IconFonts.Lock}"
+                                            Size="30"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+                                <custom1:CustomEntry
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    IsPassword="True"
+                                    Keyboard="Default"
+                                    Placeholder="Confirm Password"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding ConfirmPassword.Value}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <custom1:CustomEntry.Behaviors>
+                                        <prism:EventToCommandBehavior Command="{Binding ValidateConfirmPasswordCommand}" EventName="TextChanged" />
+                                    </custom1:CustomEntry.Behaviors>
+                                </custom1:CustomEntry>
+                            </Grid>
+                        </pancakeView:PancakeView>
+
+                        <Label
+                            Grid.Row="23"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            FontAttributes="Bold"
+                            IsVisible="{Binding ConfirmPassword.Valid}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"
+                            Text="{Binding ConfirmPassword.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+
+
+
+
+                        <Label
+                            Grid.Row="24"
+                            Grid.Column="0"
+                            FontFamily="{StaticResource OpenSansSemiBold}"
+                            Text="Is Active"
+                            VerticalOptions="Start" />
+                        <CheckBox
+                            Grid.Row="24"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Start"
+                            IsChecked="{Binding IsActive.Value}"
+                            VerticalOptions="Start" />
+
+
+
+                    </Grid>
+                    <Button
+                        Grid.Row="1"
+                        BackgroundColor="{StaticResource OrangeColor}"
+                        Command="{Binding SaveCommand, Mode=TwoWay}"
+                        Text="Save"
+                        TextColor="White"
+                        VerticalOptions="EndAndExpand" />
+                </StackLayout>
+            </ScrollView>
+
+            <control:ActivityProgressBar
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

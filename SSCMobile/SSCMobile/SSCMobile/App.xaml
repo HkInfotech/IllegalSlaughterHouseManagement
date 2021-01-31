@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="SSCMobile.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+    xmlns:styles="clr-namespace:SSCMobile.Styles">
+    <Application.Resources>
+        <ResourceDictionary Source="/Styles/LightTheme.xaml">
+
+            <!--<ResourceDictionary.MergedDictionaries>
+                <styles:Colors />
+                <styles:Fonts />
+            </ResourceDictionary.MergedDictionaries>-->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource OrangeColor}" />
+                <Setter Property="BarTextColor" Value="{StaticResource WhiteColor}" />
+            </Style>
+        </ResourceDictionary>
+        <!--  Application resource dictionary  -->
+        <Style x:Key="ValidationErrorLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="TextColor" Value="#ff5252" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+    </Application.Resources>
+</prism:PrismApplication>

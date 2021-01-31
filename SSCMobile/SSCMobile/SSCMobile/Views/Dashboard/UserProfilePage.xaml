@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.UserProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSCMobile.Controls"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:custom1="clr-namespace:SSCMobile.CustomControl"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="User Profile"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    Visual="Material">
+
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout
+                    Grid.Row="0"
+                    Margin="0,10,0,0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <controls:InitialsView
+                        Name="{Binding UserName.Value}"
+                        HeightRequest="150"
+                        WidthRequest="150" />
+                </StackLayout>
+
+                <yummy:PancakeView
+                    Grid.Row="1"
+                    Margin="0"
+                    Padding="20"
+                    BackgroundColor="White"
+                    BorderColor="BlanchedAlmond"
+                    BorderThickness="5"
+                    Elevation="5"
+                    HasShadow="True"
+                    IsClippedToBounds="True">
+                    <StackLayout Spacing="10">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansExtraBold}"
+                            FontSize="Large"
+                            Text="{Binding UserName.Value}"
+                            VerticalOptions="Start" />
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image
+                                Aspect="AspectFill"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static custom:IconFonts.Mobile}"
+                                        Size="30"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource OpenSansExtraBold}"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding UserMobile.Value}"
+                                VerticalOptions="End" />
+                            <Image
+                                Aspect="AspectFill"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static custom:IconFonts.Sms}"
+                                        Size="30"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </StackLayout>
+
+                </yummy:PancakeView>
+                <yummy:PancakeView
+                    Grid.Row="2"
+                    Padding="20"
+                    BackgroundColor="White"
+                    BorderColor="BlanchedAlmond"
+                    BorderThickness="5"
+                    Elevation="5"
+                    HasShadow="True"
+                    IsClippedToBounds="True">
+                    <StackLayout Spacing="10">
+
+
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image
+                                Aspect="AspectFill"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static custom:IconFonts.Envelope}"
+                                        Size="20"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource OpenSansExtraBold}"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding UserEmail.Value}"
+                                VerticalOptions="End" />
+
+
+                        </StackLayout>
+                    </StackLayout>
+
+                </yummy:PancakeView>
+                <yummy:PancakeView
+                    Grid.Row="3"
+                    Padding="20"
+                    BackgroundColor="White"
+                    BorderColor="BlanchedAlmond"
+                    BorderThickness="5"
+                    Elevation="5"
+                    HasShadow="True"
+                    IsClippedToBounds="True">
+                    <StackLayout Spacing="10">
+
+
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image
+                                Aspect="AspectFill"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static custom:IconFonts.City}"
+                                        Size="20"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource OpenSansExtraBold}"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding UserCity.Value}"
+                                VerticalOptions="End" />
+                        </StackLayout>
+                    </StackLayout>
+
+                </yummy:PancakeView>
+
+            </Grid>
+            <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                <Button
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource OrangeColor}"
+                    Command="{Binding ChangepasswordCommand, Mode=TwoWay}"
+                    FontFamily="{StaticResource OpenSansBold}"
+                    IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                    Text="Change Password"
+                    TextColor="White" />
+                <Button
+                    BackgroundColor="{StaticResource OrangeColor}"
+                    Command="{Binding EditUserCommad, Mode=TwoWay}"
+                    FontFamily="{StaticResource OpenSansBold}"
+                    IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                    Text="Edit"
+                    TextColor="White" />
+
+            </StackLayout>
+
+
+        </StackLayout>
+        <controls:ActivityProgressBar
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+    </AbsoluteLayout>
+
+</ContentPage>

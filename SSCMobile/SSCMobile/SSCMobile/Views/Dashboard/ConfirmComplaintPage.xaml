@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.ConfirmComplaintPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:SSCMobile.Controls"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <WebView
+                        x:Name="webview"
+                        Grid.Row="0"
+                        Source="{Binding UrlWebViewSourceObj}" />
+                    <Button
+                        Grid.Row="1"
+                        BackgroundColor="{StaticResource OrangeColor}"
+                        Command="{Binding SubmitCommand, Mode=TwoWay}"
+                        FontFamily="{StaticResource OpenSansBold}"
+                        IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                        IsVisible="{Binding IsRegisterButtonShow}"
+                        Text="Register Official Complaint"
+                        TextColor="White" />
+                </Grid>
+
+            </StackLayout>
+            <control:ActivityProgressBar
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

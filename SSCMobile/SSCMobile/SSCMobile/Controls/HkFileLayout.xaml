@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout
+    x:Class="SSCMobile.Controls.HkFileLayout"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SSCMobile.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="this"
+    mc:Ignorable="d">
+    <Label
+        BindingContext="{x:Reference this}"
+        FontSize="14"
+        TextColor="Black">
+        <Label.FormattedText>
+            <FormattedString>
+                <Span Text="{Binding Title}" />
+                <Span ForegroundColor="{Binding RequiredColor}" Text=" *" />
+            </FormattedString>
+        </Label.FormattedText>
+    </Label>
+
+    <Button
+        BackgroundColor="{Binding ButtonBackgroundColor}"
+        BindingContext="{x:Reference this}"
+        Clicked="AddFile_Clicked"
+        FontSize="12"
+        HeightRequest="35"
+        HorizontalOptions="FillAndExpand"
+        Text="{Binding ButtonText}"
+        TextColor="White"
+        VerticalOptions="EndAndExpand" />
+
+    <yummy:PancakeView
+        BackgroundColor="WhiteSmoke"
+        BindingContext="{x:Reference this}"
+        BorderColor="LightGray"
+        BorderThickness="2"
+        CornerRadius="0,0,10,10"
+        HeightRequest="100"
+        HorizontalOptions="FillAndExpand"
+        IsClippedToBounds="true"
+        IsVisible="{Binding HasFiles}">
+        <yummy:PancakeView.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+                <OnPlatform.Platforms>
+                    <On Platform="Android, iOS" Value="2,-6,2,0" />
+                    <On Platform="UWP" Value="2,-7,2,0" />
+                </OnPlatform.Platforms>
+            </OnPlatform>
+        </yummy:PancakeView.Margin>
+
+        <ScrollView
+            HeightRequest="100"
+            HorizontalScrollBarVisibility="Never"
+            Orientation="Horizontal">
+            <StackLayout
+                Padding="6,8,6,0"
+                BindableLayout.ItemsSource="{Binding Files}"
+                BindingContext="{x:Reference this}"
+                Orientation="Horizontal"
+                Spacing="12">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <FlexLayout AlignItems="Center" Direction="Column">
+                            <FlexLayout.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="FileTapped" />
+                            </FlexLayout.GestureRecognizers>
+
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                HeightRequest="100"
+                                Source="{Binding FileImage}"
+                                WidthRequest="100">
+                                <Image.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding FileType}"
+                                        TargetType="Image"
+                                        Value="Image">
+                                        <Setter Property="IsVisible" Value="True" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding FileType}"
+                                        TargetType="Image"
+                                        Value="Document">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+
+                            <!--<Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontFamily="{StaticResource MaterialFontFamily}"
+                                FontSize="60"
+                                InputTransparent="True"
+                                Text="{Binding Document}"
+                                TextColor="LightGray">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding FileType}"
+                                        TargetType="Label"
+                                        Value="Document">
+                                        <Setter Property="IsVisible" Value="True" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding FileType}"
+                                        TargetType="Label"
+                                        Value="Image">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <controls:ExtendedLabel
+                                FontSize="9"
+                                Text="{Binding Name}"
+                                WidthRequest="65" />-->
+
+
+                        </FlexLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </yummy:PancakeView>
+</StackLayout>

@@ -1,0 +1,13 @@
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\bin\Debug\netstandard2.0\SSCMobileDataBus.deps.json
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\bin\Debug\netstandard2.0\SSCMobileDataBus.dll
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\bin\Debug\netstandard2.0\SSCMobileDataBus.pdb
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\bin\Debug\netstandard2.0\SSCMobileServiceBus.dll
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\bin\Debug\netstandard2.0\SSCMobileServiceBus.pdb
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\obj\Debug\netstandard2.0\SSCMobileDataBus.csprojAssemblyReference.cache
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\obj\Debug\netstandard2.0\SSCMobileDataBus.AssemblyInfoInputs.cache
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\obj\Debug\netstandard2.0\SSCMobileDataBus.AssemblyInfo.cs
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\obj\Debug\netstandard2.0\SSCMobileDataBus.csproj.CoreCompileInputs.cache
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\obj\Debug\netstandard2.0\SSCMobileDataBus.csproj.Fody.CopyLocal.cache
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\obj\Debug\netstandard2.0\SSCMobileDataBus.csproj.CopyComplete
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\obj\Debug\netstandard2.0\SSCMobileDataBus.dll
+D:\Working\DivinitySoft\SSC\SSCMobile\SSCMobileDataBus\obj\Debug\netstandard2.0\SSCMobileDataBus.pdb

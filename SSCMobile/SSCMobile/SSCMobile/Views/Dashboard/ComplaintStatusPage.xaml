@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.ComplaintStatusPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:SSCMobile.Controls"
+    xmlns:converter="clr-namespace:SSCMobile.Converters"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:templates="clr-namespace:SSCMobile.Templates"
+    x:Name="ContentView"
+    Title="Complaint List"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ComplaintStatusConverter x:Key="StatusConverter" />
+            <converter:ComplaintStatusButtonTextConverter x:Key="complaintStatusButtonTextConverter" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ContentView>
+            <AbsoluteLayout>
+                <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ListView
+                            x:Name="ComplaintList"
+                            Grid.Row="0"
+                            HasUnevenRows="True"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding ComplaintList}"
+                            RowHeight="-1"
+                            SelectedItem="{Binding SelectedComplaint}"
+                            VerticalOptions="FillAndExpand">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <pancakeView:PancakeView
+                                            Margin="5"
+                                            Padding="10"
+                                            BorderColor="Black"
+                                            BorderGradientEndColor="{StaticResource OrangeColor}"
+                                            BorderGradientStartColor="{StaticResource OffWhiteColor}"
+                                            BorderThickness="3"
+                                            CornerRadius="5,5,5,5">
+                                            <StackLayout x:Name="Item">
+
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="80*" />
+                                                        <ColumnDefinition Width="20*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Grid.ColumnSpan="2"
+                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        TextColor="Black">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
+                                                                    FontAttributes="Bold"
+                                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                    Text="Shop Name :  " />
+                                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ShopName}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+
+                                                    <!--<Image
+                                                        Grid.Row="0"
+                                                        Grid.RowSpan="4"
+                                                        Grid.Column="1"
+                                                        Aspect="AspectFill"
+                                                        HorizontalOptions="End"
+                                                        VerticalOptions="Center">
+                                                        <Image.Source>
+                                                            <FontImageSource
+                                                                FontFamily="{StaticResource FontAwesome}"
+                                                                Glyph="{x:Static custom:IconFonts.Edit}"
+                                                                Size="20"
+                                                                Color="{StaticResource OrangeColor}" />
+                                                        </Image.Source>
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.OnCompalinStatusClickCommand, Source={x:Reference ContentView}}" CommandParameter="{Binding .}" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>-->
+                                                    <!--<Button
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="3"
+                                                    Grid.Column="1"
+                                                    BackgroundColor="{StaticResource OrangeColor}"
+                                                    Command="{Binding Path=BindingContext.OnCompalinStatusClickCommand, Source={x:Reference ContentView}}"
+                                                    CommandParameter="{Binding .}"
+                                                    FontFamily="{StaticResource OpenSansBold}"
+                                                    Text="{Binding ComplaintStatusValue}"
+                                                    TextColor="White"
+                                                    VerticalOptions="EndAndExpand" />-->
+                                                    <Label
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        Grid.ColumnSpan="2"
+                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Text="Shop name"
+                                                        TextColor="Black">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
+                                                                    FontAttributes="Bold"
+                                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                    Text="Address :  " />
+                                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ShopAddress}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                        Grid.Row="2"
+                                                        Grid.Column="0"
+                                                        Grid.ColumnSpan="2"
+                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        TextColor="Black">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
+                                                                    FontAttributes="Bold"
+                                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                    Text="Species:  " />
+                                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding SpeciesName}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                        Grid.Row="3"
+                                                        Grid.Column="0"
+                                                        Grid.ColumnSpan="2"
+                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        TextColor="Black">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
+                                                                    FontAttributes="Bold"
+                                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                    Text="Status:  " />
+                                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintStatusValue}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+
+
+                                                    <Label
+                                                        Grid.Row="5"
+                                                        Grid.Column="0"
+                                                        Grid.ColumnSpan="2"
+                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        IsVisible="{Binding IsRegister}"
+                                                        TextColor="Black">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
+                                                                    FontAttributes="Bold"
+                                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                    Text="Reg. Date:  " />
+                                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding RegistrationDate, StringFormat='{0:dd-MMMM-yyyy}'}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                        Grid.Row="6"
+                                                        Grid.Column="0"
+                                                        Grid.ColumnSpan="2"
+                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        TextColor="Black">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
+                                                                    FontAttributes="Bold"
+                                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                    Text="Raised By:  " />
+                                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding CreatedUserName}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                        Grid.Row="7"
+                                                        Grid.Column="0"
+                                                        Grid.ColumnSpan="2"
+                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        TextColor="Black">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
+                                                                    FontAttributes="Bold"
+                                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                    Text="Mobile:  " />
+                                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding UserMobileNumber}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <!--<Button
+                                                        Grid.Row="5"
+                                                        Grid.Column="0"
+                                                        BackgroundColor="{StaticResource OrangeColor}"
+                                                        Command="{Binding Path=BindingContext.OnCompalinStatusClickCommand, Source={x:Reference ContentView}}"
+                                                        CommandParameter="{Binding .}"
+                                                        FontFamily="{StaticResource OpenSansBold}"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Text="{Binding ComplainStatus, Converter={StaticResource complaintStatusButtonTextConverter}}"
+                                                        TextColor="White"
+                                                        VerticalOptions="CenterAndExpand" />-->
+                                                    <pancakeView:PancakeView
+                                                        Grid.Row="6"
+                                                        Grid.RowSpan="2"
+                                                        Grid.Column="1"
+                                                        BackgroundGradientEndColor="{StaticResource OrangeColor}"
+                                                        BackgroundGradientStartColor="{StaticResource OrangeColor}"
+                                                        CornerRadius="10">
+                                                        <Button
+                                                            BackgroundColor="Transparent"
+                                                            Command="{Binding Path=BindingContext.OnCompalinStatusClickCommand, Source={x:Reference ContentView}}"
+                                                            CommandParameter="{Binding .}"
+                                                            FontFamily="{StaticResource OpenSansBold}"
+                                                            FontSize="Small"
+                                                            HorizontalOptions="Start"
+                                                            Text="View"
+                                                            TextColor="White" />
+                                                    </pancakeView:PancakeView>
+
+                                                </Grid>
+
+                                                <!--<Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    FontSize="Medium"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    TextColor="Black">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span
+                                                                FontAttributes="Bold"
+                                                                FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                Text="Date Of Inspection:  " />
+                                                            <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding DateOfInspection, StringFormat='{0:dd-MMMM-yyyy}'}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>-->
+                                                <!--<Label
+                                                    Grid.Row="4"
+                                                    Grid.Column="0"
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    FontSize="Medium"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    TextColor="Black">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span
+                                                                FontAttributes="Bold"
+                                                                FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                Text="Comments:  " />
+                                                            <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding Comments}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>-->
+
+                                                <!--<Button
+                                                    Grid.Row="5"
+                                                    BackgroundColor="{StaticResource OrangeColor}"
+                                                    Command="{Binding Path=BindingContext.OnCompalinStatusClickCommand, Source={x:Reference ContentView}}"
+                                                    CommandParameter="{Binding .}"
+                                                    FontFamily="{StaticResource OpenSansBold}"
+                                                    Text="{Binding ComplaintStatusValue}"
+                                                    TextColor="White"
+                                                    VerticalOptions="EndAndExpand" />-->
+                                                <!--<pancakeView:PancakeView BackgroundColor="Black" HeightRequest="4" />-->
+
+                                            </StackLayout>
+                                        </pancakeView:PancakeView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+
+                        </ListView>
+
+                    </Grid>
+
+
+                </StackLayout>
+                <control:ActivityProgressBar
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+                <templates:EmptyStateView EmptyStateTitle="{Binding EmptyStateTitle, Mode=TwoWay}" IsVisible="{Binding IsEmpty, Mode=TwoWay}" />
+            </AbsoluteLayout>
+        </ContentView>
+
+
+    </ContentPage.Content>
+</ContentPage>

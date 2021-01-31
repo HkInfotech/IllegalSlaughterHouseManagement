@@ -1,0 +1,665 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.ComplaintRegister.ComplaintOverviewPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Converter="clr-namespace:SSCMobile.Converters"
+    xmlns:behaviors="clr-namespace:SSCMobile.Behaviors"
+    xmlns:control="clr-namespace:SSCMobile.Controls"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:custom1="clr-namespace:SSCMobile.CustomControl"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    Title="Complaint Overview"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource backgroundColor}"
+    NavigationPage.HasNavigationBar="True"
+    Visual="Material">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:ComplaintStatusConverter x:Key="StatusConverter" />
+
+
+            <Converter:ShowVerifiedAndRejectButtonConverter x:Key="showVerifiedAndRejectButtonConverter" />
+            <Converter:ShowRejectedDetailToBoolConverter x:Key="showRejectedDetailToBoolConverter" />
+
+            <Converter:NullOrEmptyToBoolConverter x:Key="NullOrEmptyToBoolConverter" />
+            <Converter:ShowEditAndConfirmButtonConverter x:Key="showEditAndConfirmButtonConverter" />
+            <Converter:ShowRegisterButtonConverter x:Key="showRegisterButtonConverter" />
+            <Converter:ShowViewComplaintButtonConverter x:Key="showViewComplaintButtonConverter" />
+            <Converter:ShowRegistrationDateToBoolConverter x:Key="showRegistrationDateToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Grid RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+
+                    </Grid.RowDefinitions>
+                    <!--#region  Complaint Details-->
+                    <StackLayout Grid.Row="0">
+                        <pancakeView:PancakeView
+                            Margin="10"
+                            Padding="5"
+                            BackgroundColor="WhiteSmoke"
+                            BorderColor="Black">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="Shop Name :  " />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.ShopName}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+
+
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="Address :  " />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.ShopAddress, Mode=TwoWay}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="City :" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.CityName}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="Species:  " />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.SpeciesName}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+
+
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="Date Of Inspection:  " />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.DateOfInspection, Mode=TwoWay, StringFormat='{0:dd-MMMM-yyyy}'}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+
+
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="Raised By :" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.CreatedUserName}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="Mobile :" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.UserMobileNumber}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="Status :" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.ComplainStatus, Converter={StaticResource StatusConverter}}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout IsVisible="{Binding ComplaintModelObj.ComplainStatus, Converter={StaticResource showRejectedDetailToBoolConverter}}" Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="Reg. reason:  " />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.CommentForRejection}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout IsVisible="{Binding ComplaintModelObj.ComplainStatus, Converter={StaticResource showRegistrationDateToBoolConverter}}" Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Start"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    Text="Reg. Date:  " />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="{StaticResource OpenSansExtraBold}"
+                                        FontSize="Medium"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span FontFamily="{StaticResource OpenSansRegular}" Text="{Binding ComplaintModelObj.RegistrationDate, StringFormat='{0:dd-MMMM-yyyy}'}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </StackLayout>
+
+
+                        </pancakeView:PancakeView>
+                    </StackLayout>
+                    <!--#endregion-->
+                    <!--#region Violation Details-->
+                    <StackLayout Grid.Row="1" Margin="10">
+                        <StackLayout>
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource OpenSansExtraBold}"
+                                FontSize="Medium"
+                                HorizontalOptions="Start"
+                                Text="Violations"
+                                TextColor="Black" />
+                            <Grid
+                                BackgroundColor="White"
+                                ColumnSpacing="0"
+                                RowSpacing="0"
+                                VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Vertical"
+                                    VerticalOptions="FillAndExpand">
+                                    <ListView
+                                        Margin="2"
+                                        BackgroundColor="Transparent"
+                                        HasUnevenRows="True"
+                                        HeightRequest="{Binding ListViewHeight}"
+                                        ItemsSource="{Binding LowsList, Mode=TwoWay}"
+                                        VerticalOptions="Center">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Grid>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Orientation="Vertical"
+                                                            Spacing="5"
+                                                            VerticalOptions="CenterAndExpand">
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                FontFamily="{StaticResource OpenSansExtraBold}"
+                                                                FontSize="Small">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding NumberText}" />
+                                                                        <Span Text=" " />
+                                                                        <Span Text="{Binding LowsTitile}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+
+                                                        </StackLayout>
+                                                    </Grid>
+
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </Grid>
+
+
+
+
+                        </StackLayout>
+                    </StackLayout>
+                    <!--#endregion-->
+
+                    <!--#region File Layout View-->
+                    <StackLayout Grid.Row="2" IsVisible="{Binding HasFiles}">
+                        <Grid
+                            BackgroundColor="White"
+                            ColumnSpacing="0"
+                            RowSpacing="0"
+                            VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <StackLayout
+                                Grid.Row="0"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Vertical"
+                                VerticalOptions="FillAndExpand">
+
+                                <pancakeView:PancakeView>
+                                    <control:HkFileLayout
+                                        Title="Pictorial Evidence"
+                                        Grid.Row="10"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        Margin="10"
+                                        ButtonText="Photo evidence"
+                                        FileClicked="HkFileLayout_FileClicked"
+                                        Files="{Binding ComplaintImagesDTOs}"
+                                        HasFiles="{Binding HasFiles}" />
+                                </pancakeView:PancakeView>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <!--#endregion-->
+                    <!--#region Rejection edito-->
+                    <StackLayout Grid.Row="3">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansExtraBold}"
+                            FontSize="Medium"
+                            HorizontalOptions="Start"
+                            IsVisible="{Binding ShowRejectionView}"
+                            Text="Rejection reason"
+                            TextColor="Black" />
+                        <pancakeView:PancakeView
+                            Grid.Column="1"
+                            Margin="10"
+                            Padding="5"
+                            BackgroundColor="WhiteSmoke"
+                            BorderColor="Black"
+                            HeightRequest="150"
+                            IsVisible="{Binding ShowRejectionView}">
+                            <Editor
+                                Grid.Column="1"
+                                AutoSize="TextChanges"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                IsSpellCheckEnabled="True"
+                                Keyboard="Text"
+                                Placeholder=""
+                                PlaceholderColor="Black"
+                                Text="{Binding RejectTextArea, Mode=TwoWay}"
+                                TextColor="Black"
+                                VerticalOptions="FillAndExpand"
+                                Visual="Default" />
+                        </pancakeView:PancakeView>
+                    </StackLayout>
+                    <!--#endregion-->
+
+
+
+                    <!--#region Button-->
+                    <StackLayout
+                        Grid.Row="4"
+                        Margin="10"
+                        IsVisible="{Binding Showbuttonscollection}"
+                        VerticalOptions="EndAndExpand">
+                        <Grid VerticalOptions="EndAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="50*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource OrangeColor}"
+                                Command="{Binding RejectCommand}"
+                                FontFamily="{StaticResource OpenSansBold}"
+                                IsVisible="{Binding Complaint, Converter={StaticResource showVerifiedAndRejectButtonConverter}}"
+                                Text="Reject"
+                                TextColor="White" />
+                            <Button
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource OrangeColor}"
+                                Command="{Binding VerifiedCommand}"
+                                FontFamily="{StaticResource OpenSansBold}"
+                                IsVisible="{Binding Complaint, Converter={StaticResource showVerifiedAndRejectButtonConverter}}"
+                                Text="Verify"
+                                TextColor="White" />
+
+                            <Button
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource OrangeColor}"
+                                Command="{Binding EditCommand}"
+                                FontFamily="{StaticResource OpenSansBold}"
+                                IsVisible="{Binding Complaint, Converter={StaticResource showEditAndConfirmButtonConverter}}"
+                                Text="Edit"
+                                TextColor="White" />
+                            <Button
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource OrangeColor}"
+                                Command="{Binding ConfirmCommand}"
+                                FontFamily="{StaticResource OpenSansBold}"
+                                IsVisible="{Binding Complaint, Converter={StaticResource showEditAndConfirmButtonConverter}}"
+                                Text="Confirm"
+                                TextColor="White" />
+                            <Button
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="{StaticResource OrangeColor}"
+                                Command="{Binding RegisterCommand}"
+                                FontFamily="{StaticResource OpenSansBold}"
+                                IsVisible="{Binding Complaint, Converter={StaticResource showRegisterButtonConverter}}"
+                                Text="Register"
+                                TextColor="White" />
+                            <Button
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="{StaticResource OrangeColor}"
+                                Command="{Binding ViewComplaint}"
+                                FontFamily="{StaticResource OpenSansBold}"
+                                IsVisible="{Binding Complaint, Converter={StaticResource showViewComplaintButtonConverter}}"
+                                Text="View Complaint"
+                                TextColor="White" />
+
+
+                        </Grid>
+                    </StackLayout>
+
+
+                    <StackLayout
+                        Grid.Row="4"
+                        Margin="10"
+                        IsVisible="{Binding ShowRejectionView, Mode=TwoWay}"
+                        VerticalOptions="EndAndExpand">
+                        <Grid VerticalOptions="EndAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="50*" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <Button
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource OrangeColor}"
+                                Command="{Binding SaveComplaintCommand}"
+                                FontFamily="{StaticResource OpenSansBold}"
+                                FontSize="Small"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Save complaint"
+                                TextColor="White"
+                                VerticalOptions="FillAndExpand" />
+                            <Button
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource OrangeColor}"
+                                Command="{Binding CancelCommand}"
+                                FontFamily="{StaticResource OpenSansBold}"
+                                FontSize="Small"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Cancel"
+                                TextColor="White"
+                                VerticalOptions="FillAndExpand" />
+
+
+                        </Grid>
+                    </StackLayout>
+
+                    <!--#endregion-->
+                </Grid>
+            </ScrollView>
+            <control:ActivityProgressBar
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

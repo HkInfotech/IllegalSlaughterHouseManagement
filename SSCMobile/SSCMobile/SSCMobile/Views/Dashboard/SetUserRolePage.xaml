@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.SetUserRolePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customControl="clr-namespace:SSCMobile.Controls"
+    xmlns:ffimageLoading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:templates="clr-namespace:SSCMobile.Templates"
+    x:Name="this"
+    Title="Search user"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Content>
+        <ContentView x:Name="contentView">
+            <AbsoluteLayout>
+                <StackLayout
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <SearchBar
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Enter email"
+                        Text="{Binding SearchText}"
+                        VerticalOptions="Start">
+                        <SearchBar.Behaviors>
+                            <prism:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="TextChanged" />
+                        </SearchBar.Behaviors>
+                    </SearchBar>
+                    <ListView
+                        BackgroundColor="WhiteSmoke"
+                        HasUnevenRows="True"
+                        ItemsSource="{Binding SearchResults}"
+                        SelectedItem="{Binding SelectedResult, Mode=TwoWay}"
+                        SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="8,4">
+                                        <Frame
+                                            Padding="2"
+                                            BorderColor="LightGray"
+                                            CornerRadius="10"
+                                            HasShadow="False"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand">
+                                            <Grid Padding="6,6,0,6" ColumnSpacing="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="90*" />
+                                                    <ColumnDefinition Width="10*" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout
+                                                    Padding="12,12,0,12"
+                                                    Orientation="Vertical"
+                                                    Spacing="10">
+                                                    <!--<Grid HorizontalOptions="Start" VerticalOptions="Center">
+                                                        <Label
+                                                            FontFamily="{StaticResource MaterialFontFamily}"
+                                                            FontSize="55"
+                                                            HorizontalOptions="Center"
+                                                            Text="{x:Static materialicons:IconFonts.AccountCircle}"
+                                                            TextColor="Gray"
+                                                            VerticalOptions="Center" />
+                                                        <ffimageLoading:CachedImage
+                                                            Aspect="AspectFit"
+                                                            BackgroundColor="Transparent"
+                                                            HeightRequest="50"
+                                                            HorizontalOptions="Center"
+                                                            VerticalOptions="Center"
+                                                            WidthRequest="50">
+                                                            <ffimageLoading:CachedImage.Source>
+                                                                <FontImageSource
+                                                                    FontFamily="{StaticResource FontAwesome}"
+                                                                    Glyph="{x:Static custom:IconFonts.User}"
+                                                                    Size="30"
+                                                                    Color="{StaticResource OrangeColor}" />
+                                                            </ffimageLoading:CachedImage.Source>
+                                                        </ffimageLoading:CachedImage>
+                                                    </Grid>-->
+                                                    <Label FontSize="16" TextColor="{StaticResource OrangeColor}">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="Name : " />
+                                                                <Span Text="{Binding Name}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label FontSize="16" TextColor="{StaticResource OrangeColor}">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="Email : " />
+                                                                <Span Text="{Binding Email}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+
+
+                                                    <!--<Label
+                                                         FontFamily="{StaticResource FontAwesome}"
+                                                        FontSize="40"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Text="{x:Static custom:IconFonts.}"
+                                                        TextColor="Orange"
+                                                        VerticalOptions="Center" />-->
+                                                </StackLayout>
+                                            </Grid>
+                                        </Frame>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+                        <ListView.Behaviors>
+                            <prism:EventToCommandBehavior Command="{Binding ItemSelectedCommand}" EventName="ItemTapped" />
+                        </ListView.Behaviors>
+                    </ListView>
+
+                </StackLayout>
+                <customControl:ActivityProgressBar
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+                <templates:EmptyStateView EmptyStateTitle="{Binding EmptyStateTitle, Mode=TwoWay}" IsVisible="{Binding IsEmpty, Mode=TwoWay}" />
+            </AbsoluteLayout>
+        </ContentView>
+    </ContentPage.Content>
+</ContentPage>

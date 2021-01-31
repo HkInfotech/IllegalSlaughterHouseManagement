@@ -1,0 +1,2 @@
+﻿http://ssc.resquark.com/swagger/
+To test the webapi on server

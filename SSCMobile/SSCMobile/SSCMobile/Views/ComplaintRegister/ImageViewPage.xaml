@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.ComplaintRegister.ImageViewPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:views="clr-namespace:SSCMobile.Controls"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <Grid Padding="10">
+        <views:PinchToZoomContainer>
+            <views:PinchToZoomContainer.Content>
+                <Image Source="{Binding ComplaintImage.FileImage}" />
+            </views:PinchToZoomContainer.Content>
+        </views:PinchToZoomContainer>
+    </Grid>
+</ContentPage>

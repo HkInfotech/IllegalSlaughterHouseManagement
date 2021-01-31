@@ -1,0 +1,284 @@
+﻿@model SSCWebApi.Models.Complaints
+
+@{
+    Layout = null;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;">
+
+    <!-- MESSAGE SUBJECT -->
+    <title>Complaint Details</title>
+    <style>
+        /* Reset styles */
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-width: 100%;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        body, table, td, div, p, a {
+            -webkit-font-smoothing: antialiased;
+            text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            line-height: 100%;
+        }
+
+        table, td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+            border-collapse: collapse !important;
+            border-spacing: 0;
+        }
+
+        img {
+            border: 0;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        #outlook a {
+            padding: 0;
+        }
+
+        .ReadMsgBody {
+            width: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+            .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+                line-height: 100%;
+            }
+
+        /* Rounded corners for advanced mail clients only */
+
+        @@media all and (min-width: 560px) {
+
+            .container {
+                border-radius: 8px;
+                -webkit-border-radius: 8px;
+                -moz-border-radius: 8px;
+                -khtml-border-radius: 8px;
+            }
+        }
+
+        /* Set color for auto links (addresses, dates, etc.) */
+
+        a, a:hover {
+            color: #127DB3;
+        }
+
+        .footer a, .footer a:hover {
+            color: #999999;
+        }
+    </style>
+</head>
+<body topmargin="0" rightmargin="0" bottommargin="0" leftmargin="0" marginwidth="0" marginheight="0" width="100%" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%; height: 100%; -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%;
+
+   background-color: #f5f5f5;
+	color: #000000;" bgcolor="#f5f5f5" text="#000000">
+
+    <div TYPE=HEADER>
+        <P ALIGN=RIGHT STYLE="margin-bottom: 1.13in; line-height: 100%"><IMG SRC="https://thindev.blob.core.windows.net/resquarklocal/thumb_326f7444-cf55-4906-89c5-9e1b575b3951..jpg" NAME="Picture 1" ALIGN=BOTTOM WIDTH=108 HEIGHT=108 BORDER=0></P>
+    </div>
+    <div>
+        <p>Dear Sir/Madam,</p>
+        <p>&nbsp;</p>
+        <p><strong>Sub: Immediate action required against illegal meat shops in &ldquo;<u>@Model.ShopAddress</u>&rdquo;</strong></p>
+        <p>I am writing to you from FIAPO- Federation of Indian Animal Protection Organisations. FIAPO is India&rsquo;s apex animal protection agency. Working with 129 members, over 200 supporter organizations and 400 individual activists in more than 70 cities, FIAPO is the catalyst that protects the interests of animals on local and national levels - through education, research, lobbying, mobilization, training and direct action.</p>
+        <p>I have observed that many unauthorized establishments of meat shops are active in <strong><u>&ldquo;@Model.ShopAddress&rdquo;.</u></strong> These shops pose a serious risk to health of consumers due to ill maintenance in the premises, meat being exposed to vehicular emissions, insects and rusty tools (knives). These shops also engage in the most inhuman treatment of animals like keeping a number of birds beyond the capacity of a cage, no feed available for them and use of rusty tools for slaughter.</p>
+        <p>&nbsp;</p>
+        <p>The above observations are supported by our investigations of meat shops in the <strong><u>&ldquo;@Model.ShopAddress&rdquo;.</u></strong>, An inspection report has been attached herewith for your reference. &nbsp;It was observed that these shops are operating in open violation of</p>
+        <p>&nbsp;</p>
+        <ol>
+            <li>Slaughterhouse Rules 2001, under the Prevention of Cruelty to Animals Act 1960</li>
+            <li>Karnataka Municipal Corporation Act, 1976</li>
+            <li>The Bureau of Indian Standards (BIS) Rules</li>
+            <li>Food Safety and Standards Act 2006</li>
+        </ol>
+        <p>&nbsp;</p>
+        <p>We request you to take immediate and strict action against these illegal meat shops, since they cause the worst kind of suffering to animals. Being unhygienic and with no certification for the quality of meat sold, they also pose a serious risk to public health.&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+        <p>&nbsp;</p>
+        <p><strong>INSPECTION REPORT</strong></p>
+        <table width="100%" border="1">
+            <tbody>
+                <tr>
+                    <td width="157">
+                        <p>Date of Complaint</p>
+                    </td>
+                    <td width="481">
+                        <p>@Convert.ToDateTime(Model.DateOfInspection).ToString("dd MMMM, yyyy")</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="157">
+                        <p>Place</p>
+                    </td>
+                    <td width="481">
+                        <p>@Model.ShopAddress</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&nbsp;</p>
+        <table width="100%" border="1">
+            <tbody>
+                <tr>
+                    <td width="181">
+                        <p>Name of the Organization</p>
+                    </td>
+                    <td width="457">
+                        <p>Federation of Indian Animal Protection Organisations</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="181">
+                        <p>Address</p>
+                    </td>
+                    <td width="457">
+                        <p>E-18A, Block E, East of Kailash, New Delhi &ndash; 110065</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="181">
+                        <p>Mobile No. /Contact No.</p>
+                    </td>
+                    <td width="457">
+                        <p>@Model.AspNetUsers.PhoneNumber</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="181">
+                        <p>E-mail ID</p>
+                    </td>
+                    <td width="457">
+                        <p>@Model.AspNetUsers.Email</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="181">
+                        <p>Complaint Number</p>
+                    </td>
+                    <td width="457">
+                        <p>@Model.Id</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&nbsp;</p>
+        <p><strong>Complain based on Inspection report thus given against </strong></p>
+        <table width="100%" border="1">
+            <tbody>
+                <tr>
+                    <td width="187">
+                        <p>Name of the premises</p>
+                    </td>
+                    <td width="450">
+                        <p>@Model.ShopName</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="187">
+                        <p>Address &amp; Area of the premises&nbsp;</p>
+                    </td>
+                    <td width="450">
+                        <p>@Model.ShopAddress</p>
+                    </td>
+                </tr>
+                @if (!string.IsNullOrEmpty(Model.GpsLocations))
+                {
+                    <tr>
+                        <td width="187">
+                            <p>GPS Location of the premises&nbsp;</p>
+                        </td>
+                        <td width="450">
+                            <p><a href="https://www.google.com/maps/search/?api=1&query=@Model.GpsLocations">Map Location</a></p>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <p>&nbsp;</p>
+        <p><strong>Description of Violations found during Inspection</strong></p>
+        <p>During the visit &ldquo;@Model.ShopAddress&rdquo; on &ldquo;@Convert.ToDateTime(Model.DateOfInspection).ToString("dd MMMM, yyyy")&rdquo; and found that the above mentioned premises are not following rules and regulations of applicable to their meat shop for which details are as follows: @*&ldquo;details mentioned by the user about the shop/unit&rdquo; and &ldquo;Attach in a tabular manner or in pointers the law violations that the user check marked&rdquo;*@</p>
+
+        @{
+            int i = 0;
+        }
+        <table width="100%" border="1">
+            <thead>
+                <tr>
+                    <td width="5%">No</td>
+                    <th width="30%">
+                        Observations from the meat shop
+                    </th>
+                    <th width="70%">
+                        Violations taking place
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model.ComplaintsLows)
+                {
+                    i = i + 1;
+                    <tr>
+
+                        <td>
+                            <label>@i </label>
+                        </td>
+                        <td><label>@item.Lows.LowsTitile</label></td>
+                        <td>
+                            @item.Lows.LowsDescriptions
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div><div class="footer" style="background-color: #f3931a;">
+        <P ALIGN=JUSTIFY STYLE="margin-bottom: 0.14in">
+            <FONT style="color:black;">
+                <FONT FACE="Futura Bk BT, serif">
+                    <B>
+                        Federation
+                        of Indian Animal Protection Organisations (FIAPO) is India’s apex
+                        animal rights organisation. Created for the movement, by the
+                        movement, FIAPO is India’s only federation with more than 125
+                        members and over 200 supporter organisations nationally.
+                    </B>
+                </FONT>
+            </FONT>
+        </P>
+        <P ALIGN="right" STYLE="margin-bottom: 0.14in">
+            <FONT style="color:black;">						</FONT><FONT style="color:black;">
+                <FONT FACE="Futura Bk BT, serif">
+                    <B style="color:black;">
+                        E
+                        18A, E-Block, East of Kailash, New Delhi-110065, New Delhi
+                        –110065<BR>			<text style="color:black;"> www.fiapo.org   | mail@fiapo.org</text>
+                    </B>
+                </FONT>
+            </FONT>
+        </P>
+
+    </div>
+</body>
+</html>

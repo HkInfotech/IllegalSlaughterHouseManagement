@@ -1,0 +1,158 @@
+﻿ #region Services
+       
+        #endregion
+
+        #region Properties
+
+        #endregion
+
+        #region Commands
+
+        #endregion
+
+
+        #region Constructor
+
+        #endregion
+
+        #region Methods
+
+        #endregion
+
+        private DelegateCommand _onLoginChangeCommand;
+        public DelegateCommand OnLoginCommang =>
+            _onLoginChangeCommand ?? (_onLoginChangeCommand = new DelegateCommand(async() => await OnLoginCommangCommandExecute()));
+
+        private async Task OnLoginCommangCommandExecute()
+        {
+           
+        }
+
+
+         <StackLayout Grid.Row="0" Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="15*" />
+                </Grid.RowDefinitions>
+            </Grid>
+            <StackLayout
+                Grid.Row="0"
+                Padding="20"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Image
+                    HeightRequest="150"
+                    Source="http://clipart-library.com/new_gallery/35-358224_circle-frame-abstract-png.png"
+                    WidthRequest="150" />
+            </StackLayout>
+            <StackLayout
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Label
+                    Margin="0,20,0,0"
+                    FontSize="Subtitle"
+                    HorizontalOptions="Center"
+                    Text="Living Free"
+                    VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="2">
+                <Button
+                    Margin="10"
+                    Command="{Binding OnLoginClickCommand, Mode=TwoWay}"
+                    CornerRadius="20"
+                    IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                    Text="LOGIN" />
+            </StackLayout>
+            <StackLayout Grid.Row="3">
+                <Button
+                    Margin="10"
+                    CornerRadius="20"
+                    IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                    Text="REGISTER" />
+            </StackLayout>
+            <StackLayout
+                Grid.Row="4"
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                VerticalOptions="EndAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="Joint Venture Of ResQuark And FIAPO"
+                    VerticalOptions="End" />
+            </StackLayout>
+            <StackLayout
+                Grid.Row="5"
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                VerticalOptions="StartAndExpand">
+                <CheckBox IsChecked="{Binding IsPrivacyPolicyCheck}">
+                    <CheckBox.Behaviors>
+                        <prism:EventToCommandBehavior Command="{Binding OnPrivacyPolicyChangeCommand}" EventName="CheckedChanged" />
+                    </CheckBox.Behaviors>
+                </CheckBox>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="By Continue in you agree to our Terms and Condition and Privacy Policy"
+                    VerticalOptions="End" />
+            </StackLayout>
+
+        </StackLayout>
+
+
+
+        //Sting list to int list
+         SplitLows = ComplaintModelObj.LowsId.Split(',').Select(Int32.Parse).ToList();
+
+
+//var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
+            //var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync<StoragePermission>();
+            //var mdeiaLibraryStatus = await CrossPermissions.Current.CheckPermissionStatusAsync<MediaLibraryPermission>();
+
+            //if (cameraStatus != PermissionStatus.Granted)
+            //{
+            //    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Camera))
+            //    {
+            //        await PageDialogService.DisplayAlertAsync("Need Camera", "Living Free need that camera", "OK");
+            //    }
+
+            //    cameraStatus = await CrossPermissions.Current.RequestPermissionAsync<CameraPermission>();
+            //}
+
+            //if (storageStatus != PermissionStatus.Granted)
+            //{
+            //    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Storage))
+            //    {
+            //        await PageDialogService.DisplayAlertAsync("Need storage", "Living Free need that storage", "OK");
+            //    }
+
+            //    storageStatus = await CrossPermissions.Current.RequestPermissionAsync<StoragePermission>();
+            //}
+
+            //if (mdeiaLibraryStatus != PermissionStatus.Granted)
+            //{
+            //    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.MediaLibrary))
+            //    {
+            //        await PageDialogService.DisplayAlertAsync("Need Media Library", "Living Free need that Media Library", "OK");
+            //    }
+
+            //    mdeiaLibraryStatus = await CrossPermissions.Current.RequestPermissionAsync<StoragePermission>();
+            //}
+
+            //if (cameraStatus != PermissionStatus.Granted || storageStatus != PermissionStatus.Granted)
+            //{
+            //    cameraStatus = await CrossPermissions.Current.RequestPermissionAsync<CameraPermission>();
+            //    storageStatus = await CrossPermissions.Current.RequestPermissionAsync<StoragePermission>();
+            //}
+
+            //if (!CrossMedia.Current.IsPickPhotoSupported)
+            //{
+            //    await PageDialogService.DisplayAlertAsync("Photos Not Supported", "Sorry, permission is not granted to use the media library.", "OK");
+            //    return;
+            //}

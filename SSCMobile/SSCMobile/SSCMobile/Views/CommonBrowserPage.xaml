@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.CommonBrowserPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:SSCMobile.Controls"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:templates="clr-namespace:SSCMobile.Templates"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid
+                Padding="10"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <WebView
+                    x:Name="webview"
+                    Grid.Row="0"
+                    Source="{Binding UrlWebViewSourceObj}" />
+            </Grid>
+
+        </StackLayout>
+
+        <control:ActivityProgressBar
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+        <templates:EmptyStateView EmptyStateTitle="{Binding EmptyStateTitle, Mode=TwoWay}" IsVisible="{Binding IsEmpty, Mode=TwoWay}" />
+    </AbsoluteLayout>
+</ContentPage>

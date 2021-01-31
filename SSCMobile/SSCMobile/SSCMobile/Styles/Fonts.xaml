@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="SSCMobile.Styles.Fonts"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <OnPlatform
+        x:Key="OpenSansBold"
+        x:TypeArguments="x:String"
+        Android="OpenSans-Bold.ttf#OpenSans-Bold"
+        iOS="OpenSans-Bold" />
+
+    <OnPlatform
+        x:Key="OpenSansBoldItalic"
+        x:TypeArguments="x:String"
+        Android="OpenSans-BoldItalic.ttf#OpenSans-BoldItalic"
+        iOS="OpenSans-BoldItalic" />
+
+    <OnPlatform
+        x:Key="OpenSansExtraBold"
+        x:TypeArguments="x:String"
+        Android="OpenSans-ExtraBold.ttf#OpenSans-ExtraBold"
+        iOS="OpenSans-ExtraBold" />
+
+    <OnPlatform
+        x:Key="OpenSansExtraBoldItalic"
+        x:TypeArguments="x:String"
+        Android="OpenSans-ExtraBoldItalic.ttf#OpenSans-ExtraBoldItalic"
+        iOS="OpenSans-ExtraBoldItalic" />
+
+    <OnPlatform
+        x:Key="OpenSansItalic"
+        x:TypeArguments="x:String"
+        Android="OpenSans-Italic.ttf#OpenSans-Italic"
+        iOS="OpenSans-Italic" />
+
+    <OnPlatform
+        x:Key="OpenSansLight"
+        x:TypeArguments="x:String"
+        Android="OpenSans-Light.ttf#OpenSans-Light"
+        iOS="OpenSans-Light" />
+
+    <OnPlatform
+        x:Key="OpenSansLightItalic"
+        x:TypeArguments="x:String"
+        Android="OpenSans-LightItalic.ttf#OpenSans-LightItalic"
+        iOS="OpenSans-Light" />
+    <OnPlatform
+        x:Key="OpenSansRegular"
+        x:TypeArguments="x:String"
+        Android="OpenSans-Regular.ttf#OpenSans-Regular"
+        iOS="OpenSans-Regular" />
+
+    <OnPlatform
+        x:Key="OpenSansSemiBold"
+        x:TypeArguments="x:String"
+        Android="OpenSans-SemiBold.ttf#OpenSans-SemiBold"
+        iOS="OpenSans-SemiBold" />
+
+    <OnPlatform
+        x:Key="OpenSansSemiBoldItalic"
+        x:TypeArguments="x:String"
+        Android="OpenSans-SemiBoldItalic.ttf#OpenSans-SemiBoldItalic"
+        iOS="OpenSans-SemiBoldItalic" />
+</ResourceDictionary>

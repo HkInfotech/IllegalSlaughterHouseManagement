@@ -1,0 +1,966 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SSCEntityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FCMToken" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="OTP" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsDefaultAdmin" Type="bit" />
+          <Property Name="CityId" Type="int" />
+        </EntityType>
+        <EntityType Name="CityLows">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="LowId" Type="int" />
+        </EntityType>
+        <EntityType Name="Citys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="500" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="MCEmail" Type="nvarchar" MaxLength="200" />
+          <Property Name="FcciEmail" Type="nvarchar" MaxLength="200" />
+          <Property Name="AdminEmail" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ComplaintImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComplaintId" Type="bigint" />
+          <Property Name="ImageUrl" Type="varchar(max)" />
+          <Property Name="Imagetype" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Complaints">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopName" Type="nvarchar(max)" />
+          <Property Name="ShopAddress" Type="nvarchar(max)" />
+          <Property Name="DateOfInspection" Type="datetime" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="Violations" Type="nvarchar(max)" />
+          <Property Name="GpsLocations" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="City" Type="int" />
+          <Property Name="SpeciesId" Type="int" />
+          <Property Name="ComplainStatus" Type="int" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsRejecet" Type="bit" />
+          <Property Name="CommentForRejection" Type="nvarchar(max)" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="IsRegister" Type="bit" />
+          <Property Name="IsEmailSend" Type="bit" />
+        </EntityType>
+        <EntityType Name="ComplaintsLows">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComplaintId" Type="bigint" />
+          <Property Name="LowId" Type="int" />
+        </EntityType>
+        <EntityType Name="Lows">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LowsTitile" Type="nvarchar" MaxLength="200" />
+          <Property Name="LowsDescriptions" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpeciesName" Type="varchar" MaxLength="500" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="120" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'thinquit_ssc.dbo.ComplaintList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ComplaintList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="ShopName" Type="nvarchar(max)" />
+          <Property Name="ShopAddress" Type="nvarchar(max)" />
+          <Property Name="DateOfInspection" Type="datetime" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="CityName" Type="varchar" MaxLength="500" />
+          <Property Name="SpeciesName" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="IsRejecet" Type="bit" />
+          <Property Name="IsRegister" Type="bit" />
+          <Property Name="IsEmailSend" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'thinquit_ssc.dbo.UserDetailWithRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserDetailWithRole">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserRole" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="Phonenumber" Type="nvarchar(max)" />
+          <Property Name="City" Type="varchar" MaxLength="500" />
+          <Property Name="UserRole" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CityLows__CityId__5AEE82B9">
+          <End Role="Citys" Type="Self.Citys" Multiplicity="0..1" />
+          <End Role="CityLows" Type="Self.CityLows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CityLows">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CityLows__LowId__5BE2A6F2">
+          <End Role="Lows" Type="Self.Lows" Multiplicity="0..1" />
+          <End Role="CityLows" Type="Self.CityLows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lows">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CityLows">
+              <PropertyRef Name="LowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Compl__6A30C649">
+          <End Role="Complaints" Type="Self.Complaints" Multiplicity="0..1" />
+          <End Role="ComplaintsLows" Type="Self.ComplaintsLows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Complaints">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComplaintsLows">
+              <PropertyRef Name="ComplaintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Compl__6E01572D">
+          <End Role="Complaints" Type="Self.Complaints" Multiplicity="0..1" />
+          <End Role="ComplaintImages" Type="Self.ComplaintImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Complaints">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComplaintImages">
+              <PropertyRef Name="ComplaintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__LowId__6B24EA82">
+          <End Role="Lows" Type="Self.Lows" Multiplicity="0..1" />
+          <End Role="ComplaintsLows" Type="Self.ComplaintsLows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lows">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComplaintsLows">
+              <PropertyRef Name="LowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Speci__6383C8BA">
+          <End Role="Species" Type="Self.Species" Multiplicity="0..1" />
+          <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Species">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="SpeciesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__UserI__619B8048">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaints__City__628FA481">
+          <End Role="Citys" Type="Self.Citys" Multiplicity="0..1" />
+          <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DeleteAppUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteComplaints" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetUserRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateUserRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleId" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserId" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SSCEntityModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityLows" EntityType="Self.CityLows" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Citys" EntityType="Self.Citys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplaintImages" EntityType="Self.ComplaintImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Complaints" EntityType="Self.Complaints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplaintsLows" EntityType="Self.ComplaintsLows" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lows" EntityType="Self.Lows" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Species" EntityType="Self.Species" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplaintList" EntityType="Self.ComplaintList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ComplaintList].[Id] AS [Id], 
+    [ComplaintList].[CreateDate] AS [CreateDate], 
+    [ComplaintList].[ShopName] AS [ShopName], 
+    [ComplaintList].[ShopAddress] AS [ShopAddress], 
+    [ComplaintList].[DateOfInspection] AS [DateOfInspection], 
+    [ComplaintList].[Comments] AS [Comments], 
+    [ComplaintList].[CityName] AS [CityName], 
+    [ComplaintList].[SpeciesName] AS [SpeciesName], 
+    [ComplaintList].[Status] AS [Status], 
+    [ComplaintList].[CreatedBy] AS [CreatedBy], 
+    [ComplaintList].[IsRejecet] AS [IsRejecet], 
+    [ComplaintList].[IsRegister] AS [IsRegister], 
+    [ComplaintList].[IsEmailSend] AS [IsEmailSend]
+    FROM [dbo].[ComplaintList] AS [ComplaintList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserDetailWithRole" EntityType="Self.UserDetailWithRole" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserDetailWithRole].[Id] AS [Id], 
+    [UserDetailWithRole].[Name] AS [Name], 
+    [UserDetailWithRole].[Email] AS [Email], 
+    [UserDetailWithRole].[Phonenumber] AS [Phonenumber], 
+    [UserDetailWithRole].[City] AS [City], 
+    [UserDetailWithRole].[UserRole] AS [UserRole], 
+    [UserDetailWithRole].[RoleId] AS [RoleId]
+    FROM [dbo].[UserDetailWithRole] AS [UserDetailWithRole]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__CityLows__CityId__5AEE82B9" Association="Self.FK__CityLows__CityId__5AEE82B9">
+            <End Role="Citys" EntitySet="Citys" />
+            <End Role="CityLows" EntitySet="CityLows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CityLows__LowId__5BE2A6F2" Association="Self.FK__CityLows__LowId__5BE2A6F2">
+            <End Role="Lows" EntitySet="Lows" />
+            <End Role="CityLows" EntitySet="CityLows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Compl__6A30C649" Association="Self.FK__Complaint__Compl__6A30C649">
+            <End Role="Complaints" EntitySet="Complaints" />
+            <End Role="ComplaintsLows" EntitySet="ComplaintsLows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Compl__6E01572D" Association="Self.FK__Complaint__Compl__6E01572D">
+            <End Role="Complaints" EntitySet="Complaints" />
+            <End Role="ComplaintImages" EntitySet="ComplaintImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__LowId__6B24EA82" Association="Self.FK__Complaint__LowId__6B24EA82">
+            <End Role="Lows" EntitySet="Lows" />
+            <End Role="ComplaintsLows" EntitySet="ComplaintsLows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Speci__6383C8BA" Association="Self.FK__Complaint__Speci__6383C8BA">
+            <End Role="Species" EntitySet="Species" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__UserI__619B8048" Association="Self.FK__Complaint__UserI__619B8048">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaints__City__628FA481" Association="Self.FK__Complaints__City__628FA481">
+            <End Role="Citys" EntitySet="Citys" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SSCEntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SSCEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="AspNetUsers" EntityType="SSCEntityModel.AspNetUsers" />
+          <EntitySet Name="CityLows" EntityType="SSCEntityModel.CityLows" />
+          <EntitySet Name="Citys" EntityType="SSCEntityModel.Citys" />
+          <EntitySet Name="ComplaintImages" EntityType="SSCEntityModel.ComplaintImages" />
+          <EntitySet Name="ComplaintsLows" EntityType="SSCEntityModel.ComplaintsLows" />
+          <EntitySet Name="Lows" EntityType="SSCEntityModel.Lows" />
+          <EntitySet Name="Species" EntityType="SSCEntityModel.Species" />
+          <AssociationSet Name="FK__CityLows__CityId__5AEE82B9" Association="SSCEntityModel.FK__CityLows__CityId__5AEE82B9">
+            <End Role="Citys" EntitySet="Citys" />
+            <End Role="CityLows" EntitySet="CityLows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CityLows__LowId__5BE2A6F2" Association="SSCEntityModel.FK__CityLows__LowId__5BE2A6F2">
+            <End Role="Lows" EntitySet="Lows" />
+            <End Role="CityLows" EntitySet="CityLows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__LowId__6B24EA82" Association="SSCEntityModel.FK__Complaint__LowId__6B24EA82">
+            <End Role="Lows" EntitySet="Lows" />
+            <End Role="ComplaintsLows" EntitySet="ComplaintsLows" />
+          </AssociationSet>
+          <EntitySet Name="Complaints" EntityType="SSCEntityModel.Complaints" />
+          <AssociationSet Name="FK__Complaint__UserI__619B8048" Association="SSCEntityModel.FK__Complaint__UserI__619B8048">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaints__City__628FA481" Association="SSCEntityModel.FK__Complaints__City__628FA481">
+            <End Role="Citys" EntitySet="Citys" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Compl__6E01572D" Association="SSCEntityModel.FK__Complaint__Compl__6E01572D">
+            <End Role="Complaints" EntitySet="Complaints" />
+            <End Role="ComplaintImages" EntitySet="ComplaintImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Compl__6A30C649" Association="SSCEntityModel.FK__Complaint__Compl__6A30C649">
+            <End Role="Complaints" EntitySet="Complaints" />
+            <End Role="ComplaintsLows" EntitySet="ComplaintsLows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Complaint__Speci__6383C8BA" Association="SSCEntityModel.FK__Complaint__Speci__6383C8BA">
+            <End Role="Species" EntitySet="Species" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <EntitySet Name="AspNetRoles" EntityType="SSCEntityModel.AspNetRoles" />
+          <AssociationSet Name="AspNetUserRoles" Association="SSCEntityModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <FunctionImport Name="UpdateUserRole">
+            <Parameter Name="RoleId" Mode="In" Type="String" />
+            <Parameter Name="UserId" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ComplaintList" EntityType="SSCEntityModel.ComplaintList" />
+          <FunctionImport Name="DeleteAppUsers">
+          <Parameter Name="UserId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteComplaints">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="UserDetailWithRole" EntityType="SSCEntityModel.UserDetailWithRole" />
+          <FunctionImport Name="GetUserRole" ReturnType="Collection(SSCEntityModel.GetUserRole_Result)">
+            <Parameter Name="UserId" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FCMToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Complaints" Relationship="SSCEntityModel.FK__Complaint__UserI__619B8048" FromRole="AspNetUsers" ToRole="Complaints" />
+          <Property Name="OTP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetRoles" Relationship="SSCEntityModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="IsDefaultAdmin" Type="Boolean" />
+          <Property Name="CityId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CityLows">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="LowId" Type="Int32" />
+          <NavigationProperty Name="Citys" Relationship="SSCEntityModel.FK__CityLows__CityId__5AEE82B9" FromRole="CityLows" ToRole="Citys" />
+          <NavigationProperty Name="Lows" Relationship="SSCEntityModel.FK__CityLows__LowId__5BE2A6F2" FromRole="CityLows" ToRole="Lows" />
+        </EntityType>
+        <EntityType Name="Citys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CityLows" Relationship="SSCEntityModel.FK__CityLows__CityId__5AEE82B9" FromRole="Citys" ToRole="CityLows" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="MCEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FcciEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Complaints" Relationship="SSCEntityModel.FK__Complaints__City__628FA481" FromRole="Citys" ToRole="Complaints" />
+          <Property Name="AdminEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComplaintImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComplaintId" Type="Int64" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Imagetype" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Complaints" Relationship="SSCEntityModel.FK__Complaint__Compl__6E01572D" FromRole="ComplaintImages" ToRole="Complaints" />
+        </EntityType>
+        <EntityType Name="ComplaintsLows">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComplaintId" Type="Int64" />
+          <Property Name="LowId" Type="Int32" />
+          <NavigationProperty Name="Lows" Relationship="SSCEntityModel.FK__Complaint__LowId__6B24EA82" FromRole="ComplaintsLows" ToRole="Lows" />
+          <NavigationProperty Name="Complaints" Relationship="SSCEntityModel.FK__Complaint__Compl__6A30C649" FromRole="ComplaintsLows" ToRole="Complaints" />
+        </EntityType>
+        <EntityType Name="Lows">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LowsTitile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LowsDescriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CityLows" Relationship="SSCEntityModel.FK__CityLows__LowId__5BE2A6F2" FromRole="Lows" ToRole="CityLows" />
+          <NavigationProperty Name="ComplaintsLows" Relationship="SSCEntityModel.FK__Complaint__LowId__6B24EA82" FromRole="Lows" ToRole="ComplaintsLows" />
+        </EntityType>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpeciesName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Icon" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Complaints" Relationship="SSCEntityModel.FK__Complaint__Speci__6383C8BA" FromRole="Species" ToRole="Complaints" />
+        </EntityType>
+        <Association Name="FK__CityLows__CityId__5AEE82B9">
+          <End Type="SSCEntityModel.Citys" Role="Citys" Multiplicity="0..1" />
+          <End Type="SSCEntityModel.CityLows" Role="CityLows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CityLows">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CityLows__LowId__5BE2A6F2">
+          <End Type="SSCEntityModel.Lows" Role="Lows" Multiplicity="0..1" />
+          <End Type="SSCEntityModel.CityLows" Role="CityLows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lows">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CityLows">
+              <PropertyRef Name="LowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__LowId__6B24EA82">
+          <End Type="SSCEntityModel.Lows" Role="Lows" Multiplicity="0..1" />
+          <End Type="SSCEntityModel.ComplaintsLows" Role="ComplaintsLows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lows">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComplaintsLows">
+              <PropertyRef Name="LowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Complaints">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShopAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfInspection" Type="DateTime" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Violations" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GpsLocations" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="SpeciesId" Type="Int32" />
+          <Property Name="ComplainStatus" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsRejecet" Type="Boolean" />
+          <Property Name="CommentForRejection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="IsRegister" Type="Boolean" />
+          <Property Name="IsEmailSend" Type="Boolean" />
+          <NavigationProperty Name="AspNetUsers" Relationship="SSCEntityModel.FK__Complaint__UserI__619B8048" FromRole="Complaints" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Citys" Relationship="SSCEntityModel.FK__Complaints__City__628FA481" FromRole="Complaints" ToRole="Citys" />
+          <NavigationProperty Name="ComplaintImages" Relationship="SSCEntityModel.FK__Complaint__Compl__6E01572D" FromRole="Complaints" ToRole="ComplaintImages" />
+          <NavigationProperty Name="ComplaintsLows" Relationship="SSCEntityModel.FK__Complaint__Compl__6A30C649" FromRole="Complaints" ToRole="ComplaintsLows" />
+          <NavigationProperty Name="Species" Relationship="SSCEntityModel.FK__Complaint__Speci__6383C8BA" FromRole="Complaints" ToRole="Species" />
+        </EntityType>
+        <Association Name="FK__Complaint__UserI__619B8048">
+          <End Type="SSCEntityModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
+          <End Type="SSCEntityModel.Complaints" Role="Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaints__City__628FA481">
+          <End Type="SSCEntityModel.Citys" Role="Citys" Multiplicity="0..1" />
+          <End Type="SSCEntityModel.Complaints" Role="Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Citys">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Compl__6E01572D">
+          <End Type="SSCEntityModel.Complaints" Role="Complaints" Multiplicity="0..1" />
+          <End Type="SSCEntityModel.ComplaintImages" Role="ComplaintImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Complaints">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComplaintImages">
+              <PropertyRef Name="ComplaintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Compl__6A30C649">
+          <End Type="SSCEntityModel.Complaints" Role="Complaints" Multiplicity="0..1" />
+          <End Type="SSCEntityModel.ComplaintsLows" Role="ComplaintsLows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Complaints">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComplaintsLows">
+              <PropertyRef Name="ComplaintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Complaint__Speci__6383C8BA">
+          <End Type="SSCEntityModel.Species" Role="Species" Multiplicity="0..1" />
+          <End Type="SSCEntityModel.Complaints" Role="Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Species">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="SpeciesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetUserRole_Result">
+          <Property Type="String" Name="UserRole" Nullable="false" MaxLength="256" />
+        </ComplexType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="SSCEntityModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <Association Name="AspNetUserRoles">
+          <End Type="SSCEntityModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="SSCEntityModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ComplaintList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="ShopName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShopAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfInspection" Type="DateTime" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SpeciesName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsRejecet" Type="Boolean" />
+          <Property Name="IsRegister" Type="Boolean" />
+          <Property Name="IsEmailSend" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="UserDetailWithRole">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserRole" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Phonenumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SSCEntityModelStoreContainer" CdmEntityContainer="SSCEntities" >
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SSCEntityModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="IsDefaultAdmin" ColumnName="IsDefaultAdmin" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FCMToken" ColumnName="FCMToken" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityLows">
+            <EntityTypeMapping TypeName="SSCEntityModel.CityLows">
+              <MappingFragment StoreEntitySet="CityLows">
+                <ScalarProperty Name="LowId" ColumnName="LowId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Citys">
+            <EntityTypeMapping TypeName="SSCEntityModel.Citys">
+              <MappingFragment StoreEntitySet="Citys">
+                <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+                <ScalarProperty Name="FcciEmail" ColumnName="FcciEmail" />
+                <ScalarProperty Name="MCEmail" ColumnName="MCEmail" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComplaintImages">
+            <EntityTypeMapping TypeName="SSCEntityModel.ComplaintImages">
+              <MappingFragment StoreEntitySet="ComplaintImages">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Imagetype" ColumnName="Imagetype" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComplaintsLows">
+            <EntityTypeMapping TypeName="SSCEntityModel.ComplaintsLows">
+              <MappingFragment StoreEntitySet="ComplaintsLows">
+                <ScalarProperty Name="LowId" ColumnName="LowId" />
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lows">
+            <EntityTypeMapping TypeName="SSCEntityModel.Lows">
+              <MappingFragment StoreEntitySet="Lows">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LowsDescriptions" ColumnName="LowsDescriptions" />
+                <ScalarProperty Name="LowsTitile" ColumnName="LowsTitile" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Species">
+            <EntityTypeMapping TypeName="SSCEntityModel.Species">
+              <MappingFragment StoreEntitySet="Species">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="SpeciesName" ColumnName="SpeciesName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Complaints">
+            <EntityTypeMapping TypeName="SSCEntityModel.Complaints">
+              <MappingFragment StoreEntitySet="Complaints">
+                <ScalarProperty Name="IsEmailSend" ColumnName="IsEmailSend" />
+                <ScalarProperty Name="IsRegister" ColumnName="IsRegister" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="CommentForRejection" ColumnName="CommentForRejection" />
+                <ScalarProperty Name="IsRejecet" ColumnName="IsRejecet" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="ComplainStatus" ColumnName="ComplainStatus" />
+                <ScalarProperty Name="SpeciesId" ColumnName="SpeciesId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GpsLocations" ColumnName="GpsLocations" />
+                <ScalarProperty Name="Violations" ColumnName="Violations" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DateOfInspection" ColumnName="DateOfInspection" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SSCEntityModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="SSCEntityModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="UpdateUserRole" FunctionName="SSCEntityModel.Store.UpdateUserRole" />
+          <EntitySetMapping Name="ComplaintList">
+            <EntityTypeMapping TypeName="SSCEntityModel.ComplaintList">
+              <MappingFragment StoreEntitySet="ComplaintList">
+                <ScalarProperty Name="IsEmailSend" ColumnName="IsEmailSend" />
+                <ScalarProperty Name="IsRegister" ColumnName="IsRegister" />
+                <ScalarProperty Name="IsRejecet" ColumnName="IsRejecet" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SpeciesName" ColumnName="SpeciesName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DateOfInspection" ColumnName="DateOfInspection" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteAppUsers" FunctionName="SSCEntityModel.Store.DeleteAppUsers" />
+          <FunctionImportMapping FunctionImportName="DeleteComplaints" FunctionName="SSCEntityModel.Store.DeleteComplaints" />
+          <EntitySetMapping Name="UserDetailWithRole">
+            <EntityTypeMapping TypeName="SSCEntityModel.UserDetailWithRole">
+              <MappingFragment StoreEntitySet="UserDetailWithRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Phonenumber" ColumnName="Phonenumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserRole" FunctionName="SSCEntityModel.Store.GetUserRole" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SSCEntityModel.GetUserRole_Result">
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

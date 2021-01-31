@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sscmobile="clr-namespace:SSCMobile;assembly=SSCMobile">
+
+    <x:Double x:Key="TextPageTitle">25</x:Double>
+    <x:Double x:Key="TextSizeHeadline">20</x:Double>
+
+    <x:Double x:Key="TextSizeTitle">18</x:Double>
+    <x:Double x:Key="TextSizeSubhead">16</x:Double>
+    <x:Double x:Key="TextSizeBody">14</x:Double>
+    <x:Double x:Key="TextSizeCaption">12</x:Double>
+    <x:Double x:Key="TextSizeSmallCaption">11</x:Double>
+
+    <Style x:Key="TitleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeHeadline}" />
+        <Setter Property="TextColor" Value="{DynamicResource OffWhiteColor}" />
+    </Style>
+    <Style x:Key="SubTitleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeHeadline}" />
+        <Setter Property="TextColor" Value="{DynamicResource OffWhiteColor}" />
+    </Style>
+    <Style x:Key="PageTitle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeTitle}" />
+        <Setter Property="TextColor" Value="{DynamicResource OffWhiteColor}" />
+    </Style>
+    <Style x:Key="PageDescription" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
+        <Setter Property="TextColor" Value="{DynamicResource OffWhiteColor}" />
+    </Style>
+    <Style x:Key="SSButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{DynamicResource OrangeColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource WhiteColor}" />
+    </Style>
+</ResourceDictionary>

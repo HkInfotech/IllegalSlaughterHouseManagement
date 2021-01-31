@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.CityAdminPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customControl="clr-namespace:SSCMobile.Controls"
+    xmlns:fonts="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:templates="clr-namespace:SSCMobile.Templates"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="this"
+    Title="Cities"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding AddCommand}" Text="Add City">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{StaticResource FontAwesome}"
+                    Glyph="{Static fonts:IconFonts.Plus}"
+                    Size="24"
+                    Color="White" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ContentView x:Name="contentView">
+            <AbsoluteLayout>
+                <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    <ListView
+                        BackgroundColor="WhiteSmoke"
+                        HasUnevenRows="True"
+                        ItemsSource="{Binding CityList}"
+                        RowHeight="-1"
+                        SelectedItem="{Binding SelectedCityDTO}"
+                        SeparatorVisibility="None"
+                        VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <yummy:PancakeView
+                                        Margin="5"
+                                        Padding="6,6,0,6"
+                                        BorderColor="LightGray"
+                                        BorderThickness="2"
+                                        CornerRadius="10"
+                                        HasShadow="False"
+                                        VerticalOptions="Start">
+                                        <StackLayout Padding="10" Spacing="4">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <!--<Label FontFamily="{StaticResource OpenSansBold}" Text="City Name : " />-->
+                                                <Label FontFamily="{StaticResource OpenSansRegular}" Text="{Binding CityName}" />
+                                                <Label
+                                                    FontFamily="{StaticResource FontAwesome}"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Text="{Static fonts:IconFonts.CaretRight}"
+                                                    TextColor="{StaticResource OrangeColor}">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding SelectedItemCommand}" />
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </StackLayout>
+                                            <!--<StackLayout Orientation="Vertical" Spacing="0">
+                                                <Label FontFamily="{StaticResource OpenSansBold}" Text="Municipal Corporation Email " />
+                                                <Label FontFamily="{StaticResource OpenSansRegular}" Text="{Binding MCEmail}" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical" Spacing="0">
+                                                <Label FontFamily="{StaticResource OpenSansBold}" Text="FCCI Email" />
+                                                <Label FontFamily="{StaticResource OpenSansRegular}" Text="{Binding FcciEmail}" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical" Spacing="0">
+                                                <Label FontFamily="{StaticResource OpenSansBold}" Text="Addmin Email" />
+                                                <Label FontFamily="{StaticResource OpenSansRegular}" Text="{Binding AdminEmail}" />
+                                            </StackLayout>-->
+                                        </StackLayout>
+                                    </yummy:PancakeView>
+
+                                </ViewCell>
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+                        <ListView.Behaviors>
+                            <prism:EventToCommandBehavior Command="{Binding SelectedItemCommand}" EventName="ItemSelected" />
+                        </ListView.Behaviors>
+                    </ListView>
+
+                </StackLayout>
+                <customControl:ActivityProgressBar
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+                <templates:EmptyStateView EmptyStateTitle="{Binding EmptyStateTitle, Mode=TwoWay}" IsVisible="{Binding IsEmpty, Mode=TwoWay}" />
+            </AbsoluteLayout>
+        </ContentView>
+    </ContentPage.Content>
+</ContentPage>

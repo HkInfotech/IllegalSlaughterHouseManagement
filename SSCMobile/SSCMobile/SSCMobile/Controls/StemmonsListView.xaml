@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSCMobile.Controls.StemmonsListView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="this"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                ColumnSpacing="1"
+                RowSpacing="1">
+                <StackLayout>
+                    <SearchBar
+                        x:Name="txtSearchBar"
+                        HorizontalOptions="Center"
+                        Placeholder="Search"
+                        TextChanged="TxtSearchBar_TextChanged"
+                        VerticalOptions="Start" />
+                    <Label
+                        x:Name="imgSortBy"
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="40">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizerForSort_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <ListView
+                        x:Name="lstStemmons"
+                        BackgroundColor="WhiteSmoke"
+                        HasUnevenRows="True"
+                        ItemAppearing="OnItemAppearing"
+                        ItemSelected="ListViewItemSelected"
+                        SeparatorVisibility="None">
+                        <ListView.Footer>
+                            <StackLayout
+                                x:Name="lstFooter"
+                                Padding="16"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="False"
+                                Spacing="2"
+                                VerticalOptions="CenterAndExpand">
+                                <ActivityIndicator
+                                    BindingContext="{x:Reference this}"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    IsRunning="True"
+                                    IsVisible="{Binding IsLoading}"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30"
+                                    Color="Black" />
+
+                                <Label
+                                    BindingContext="{x:Reference this}"
+                                    IsVisible="{Binding IsLoading, Converter={StaticResource BoolInversorConverter}}"
+                                    TextColor="Blue"
+                                    TextDecorations="Underline">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GetMoreFromServerCommand}" />
+                                    </Label.GestureRecognizers>
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsUpToDate}"
+                                            TargetType="Label"
+                                            Value="True">
+                                            <Setter Property="Text" Value="You're up to date!" />
+                                        </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding IsUpToDate}"
+                                            TargetType="Label"
+                                            Value="False">
+                                            <Setter Property="Text" Value="Get more from server..." />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </StackLayout>
+                        </ListView.Footer>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

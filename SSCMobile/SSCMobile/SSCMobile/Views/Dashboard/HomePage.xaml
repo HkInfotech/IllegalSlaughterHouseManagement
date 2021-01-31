@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="Home"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    Visual="Material">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout
+                Margin="10"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsClippedToBounds="True">
+
+                <StackLayout Spacing="20" VerticalOptions="StartAndExpand">
+
+                    <!--<yummy:PancakeView
+                        BorderColor="Black"
+                        BorderGradientEndColor="{StaticResource OrangeColor}"
+                        BorderGradientStartColor="{StaticResource OffWhiteColor}"
+                        CornerRadius="5,5,5,5"
+                        VerticalOptions="Start">
+
+                    </yummy:PancakeView>
+
+                    <yummy:PancakeView
+                        BorderColor="Black"
+                        BorderGradientEndColor="{StaticResource OrangeColor}"
+                        BorderGradientStartColor="{StaticResource OffWhiteColor}"
+                        BorderThickness="3"
+                        CornerRadius="5,5,5,5">
+
+                    </yummy:PancakeView>
+
+                    <yummy:PancakeView
+                        BorderColor="Black"
+                        BorderGradientEndColor="{StaticResource OrangeColor}"
+                        BorderGradientStartColor="{StaticResource OffWhiteColor}"
+                        BorderThickness="3"
+                        CornerRadius="5,5,5,5">
+
+                    </yummy:PancakeView>-->
+
+                    <StackLayout Margin="0,10,0,0" Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="100"
+                            Source="ComplaintBook1orange.png"
+                            WidthRequest="100" />
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Vertical"
+                            VerticalOptions="Center">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center">
+                                <Label.Text>
+                                    If you want to raise a complaint against meat shop that is unauthorized or not following laws.
+                                </Label.Text>
+                            </Label>
+                            <Button
+                                BackgroundColor="{DynamicResource OrangeColor}"
+                                Command="{Binding OnComplainRegisterClickCommnad}"
+                                HorizontalOptions="Center"
+                                Text="Register New Complaint" />
+
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" Color="{StaticResource OrangeColor}" />
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="100"
+                            Source="ComplaintBook2orange.png"
+                            WidthRequest="100" />
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Vertical"
+                            VerticalOptions="Center">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center">
+                                <Label.Text>
+                                    If you want to check the verification status of  registered complaints.
+                                </Label.Text>
+                            </Label>
+                            <Button
+                                BackgroundColor="{DynamicResource OrangeColor}"
+                                Command="{Binding FollowuponPreviousComplaintCommnad}"
+                                HorizontalOptions="Center"
+                                Text="Follow up on Complaint"
+                                VerticalOptions="Center" />
+
+                        </StackLayout>
+
+                    </StackLayout>
+                    <BoxView HeightRequest="1" Color="{StaticResource OrangeColor}" />
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="100"
+                            Source="laworange.png"
+                            WidthRequest="100" />
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Vertical"
+                            VerticalOptions="Center">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center">
+                                <Label.Text>
+                                    Confused what is legal and what is illegal ?
+                                </Label.Text>
+                            </Label>
+                            <Button
+                                BackgroundColor="{DynamicResource OrangeColor}"
+                                Command="{Binding LowsViewCommand}"
+                                HorizontalOptions="Center"
+                                Text="Know The Slaughter Laws" />
+
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" Color="{StaticResource OrangeColor}" />
+                </StackLayout>
+
+
+
+
+                <!--<yummy:PancakeView
+                    Padding="5"
+                    BackgroundColor="White"
+                    CornerRadius="20"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout>
+
+                        <Button
+                            BackgroundColor="{DynamicResource OrangeColor}"
+                            Command="{Binding FollowuponPreviousComplaintCommnad}"
+                            FontFamily="{StaticResource OpenSansExtraBold}"
+                            HeightRequest="25"
+                            Text="Follow up on Complaint"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansExtraBold}"
+                            Style="{StaticResource PageTitle}">
+                            <Label.Text>
+                                If you want to check the verification status of  registered complaints, Tap Here
+                            </Label.Text>
+                        </Label>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <yummy:PancakeView
+                    Padding="5"
+                    BackgroundColor="White"
+                    CornerRadius="20"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout>
+
+                        <Button
+                            BackgroundColor="{DynamicResource OrangeColor}"
+                            Command="{Binding LowsViewCommand}"
+                            FontFamily="{StaticResource OpenSansExtraBold}"
+                            HeightRequest="25"
+                            Text="Know The Slaughter Laws"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource OpenSansExtraBold}"
+                            Style="{StaticResource PageTitle}">
+                            <Label.Text>
+                                Confused what is legal and what is illegal ? Check here:
+                            </Label.Text>
+                        </Label>
+                    </StackLayout>
+                </yummy:PancakeView>-->
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.LowsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:SSCMobile.Controls"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:templates="clr-namespace:SSCMobile.Templates"
+    Title="Know The Slaughter Laws"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Content>
+        <ScrollView>
+            <AbsoluteLayout>
+                <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+
+                    <CollectionView
+                        x:Name="collectionList"
+                        Margin="10"
+                        HeightRequest="-1"
+                        ItemsSource="{Binding LowsList}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout
+                                        Grid.Row="0"
+                                        HorizontalOptions="FillAndExpand"
+                                        Orientation="Vertical"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label
+                                            Grid.Row="0"
+                                            FontAttributes="Bold"
+                                            FontFamily="{StaticResource OpenSansExtraBold}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding NumberText}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding LowsTitile}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label FontFamily="{StaticResource OpenSansRegular}" Text="{Binding LowsDescriptions}" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!--<pancakeView:PancakeView
+                        Margin="10"
+                        Padding="5"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="Black"
+                        HeightRequest="-1">
+                        <StackLayout HeightRequest="-1">
+
+                            <StackLayout
+                                Padding="6,8,6,0"
+                                BindableLayout.ItemsSource="{Binding LowsList}"
+                                Orientation="Vertical"
+                                Spacing="12">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Vertical"
+                                            VerticalOptions="CenterAndExpand">
+
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+
+                                                <Label
+                                                    Grid.Row="0"
+                                                    FontAttributes="Bold"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding NumberText}" />
+                                                            <Span Text=" " />
+                                                            <Span Text="{Binding LowsTitile}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label FontFamily="{StaticResource OpenSansRegular}" Text="{Binding LowsDescriptions}" />
+                                            </Grid>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </StackLayout>
+                    </pancakeView:PancakeView>-->
+
+
+                </StackLayout>
+                <control:ActivityProgressBar
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+                <templates:EmptyStateView EmptyStateTitle="No Lows Found" IsVisible="{Binding IsEmpty, Mode=TwoWay}" />
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SSCMobile.Controls.ActivityProgressBar"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <StackLayout
+            BackgroundColor="#00FFFFFF"
+            HorizontalOptions="CenterAndExpand"
+            Orientation="Horizontal"
+            VerticalOptions="CenterAndExpand">
+
+            <ActivityIndicator
+                IsRunning="True"
+                IsVisible="True"
+                Color="Orange">
+                <!--<ActivityIndicator.Margin>
+                    <OnPlatform iOS="20,20,0,20" Android="25,10,0,10" Default="25,10,0,10" x:TypeArguments="Thickness" />
+                </ActivityIndicator.Margin>-->
+            </ActivityIndicator>
+            <Label
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="Loading..."
+                TextColor="Black"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center">
+                <Label.Margin>
+                    <OnPlatform
+                        x:TypeArguments="Thickness"
+                        Android="0,15,25,15"
+                        iOS="0,20,20,20" />
+                </Label.Margin>
+            </Label>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

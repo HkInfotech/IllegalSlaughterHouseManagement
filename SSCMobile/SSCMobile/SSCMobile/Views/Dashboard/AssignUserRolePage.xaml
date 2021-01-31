@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.Dashboard.AssignUserRolePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:custom1="clr-namespace:SSCMobile.CustomControl"
+    xmlns:customControl="clr-namespace:SSCMobile.Controls"
+    xmlns:ffimageLoading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:templates="clr-namespace:SSCMobile.Templates"
+    Title="Assign Role"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Margin="10" Orientation="Vertical">
+                    <Label
+                        Grid.Row="0"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource OpenSansBold}"
+                        FontSize="Medium"
+                        Text="Email" />
+                    <pancakeView:PancakeView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="Transparent"
+                        BorderColor="Black"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        HeightRequest="65">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static custom:IconFonts.Envelope}"
+                                        Size="30"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+
+
+
+                            <pancakeView:PancakeView Grid.Column="1">
+                                <custom1:CustomEntry
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    IsEnabled="False"
+                                    Placeholder="Password"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding SelectedResult.Email}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+
+                            </pancakeView:PancakeView>
+                        </Grid>
+                    </pancakeView:PancakeView>
+                </StackLayout>
+                <StackLayout Margin="10" Orientation="Vertical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            FontFamily="{StaticResource OpenSansBold}"
+                            FontSize="Medium"
+                            Text="Select Role" />
+                        <pancakeView:PancakeView
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            Glyph="{x:Static custom:IconFonts.ArrowCircleDown}"
+                                            Size="30"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+
+
+
+                                <pancakeView:PancakeView Grid.Column="1">
+                                    <custom1:CustomEntry
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Fill"
+                                        IsEnabled="False"
+                                        Placeholder="Password"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding SelectedAppRole.Name}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center" />
+                                    <pancakeView:PancakeView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectRoleCommand}" />
+                                    </pancakeView:PancakeView.GestureRecognizers>
+                                </pancakeView:PancakeView>
+                            </Grid>
+                        </pancakeView:PancakeView>
+                    </Grid>
+                </StackLayout>
+                <Button
+                    Grid.Row="1"
+                    BackgroundColor="{StaticResource OrangeColor}"
+                    Command="{Binding SaveRoleCommand, Mode=TwoWay}"
+                    FontFamily="{StaticResource OpenSansBold}"
+                    Text="Save"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+
+
+
+            </StackLayout>
+            <customControl:ActivityProgressBar
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

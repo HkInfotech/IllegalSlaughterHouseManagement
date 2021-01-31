@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.ComplaintRegister.ComplaintRegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Converter="clr-namespace:SSCMobile.Converters"
+    xmlns:behaviors="clr-namespace:SSCMobile.Behaviors"
+    xmlns:control="clr-namespace:SSCMobile.Controls"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:custom1="clr-namespace:SSCMobile.CustomControl"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    Title="Register Complaint"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource backgroundColor}"
+    NavigationPage.HasNavigationBar="true"
+    Visual="Material"
+    mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Command="{Binding PickComplaintLocationPage}" Text="Location">
+          <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{StaticResource FontAwesome}"
+                    Glyph="{x:Static custom:IconFonts.MapMarkerAlt}"
+                    Size="50"
+                    Color="Black" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>-->
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:ValidationErrorConverter x:Key="ValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <ScrollView IsClippedToBounds="True">
+            <Grid>
+                <StackLayout Padding="10">
+
+
+                    <ScrollView>
+                        <pancakeView:PancakeView
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            BackgroundColor="Transparent"
+                            BorderColor="Black"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            HeightRequest="65">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesome}"
+                                            Glyph="{x:Static custom:IconFonts.Store}"
+                                            Size="30"
+                                            Color="{StaticResource OrangeColor}" />
+                                    </Image.Source>
+                                </Image>
+                                <custom1:CustomEntry
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    Placeholder="Shop name"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding ShopName.Value, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <custom1:CustomEntry.Behaviors>
+                                        <behaviors:EventToCommandBehavior Command="{Binding ValidateShopNameCommand}" EventName="TextChanged" />
+                                    </custom1:CustomEntry.Behaviors>
+                                </custom1:CustomEntry>
+                            </Grid>
+
+                        </pancakeView:PancakeView>
+                    </ScrollView>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
+                        IsVisible="{Binding ShopName.Valid}"
+                        Style="{StaticResource ValidationErrorLabelStyle}"
+                        Text="{Binding ShopName.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                        TextColor="IndianRed" />
+
+                    <pancakeView:PancakeView
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="Transparent"
+                        BorderColor="Black"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        HeightRequest="65">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesome}"
+                                        Glyph="{x:Static custom:IconFonts.AddressCard}"
+                                        Size="30"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+                            <custom1:CustomEntry
+                                Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Fill"
+                                Placeholder="Shop address"
+                                PlaceholderColor="Black"
+                                Text="{Binding ShopAddress.Value, Mode=TwoWay}"
+                                TextColor="Black"
+                                VerticalOptions="Center">
+                                <custom1:CustomEntry.Behaviors>
+                                    <behaviors:EventToCommandBehavior Command="{Binding ValidateShopAddressCommand}" EventName="TextChanged" />
+                                </custom1:CustomEntry.Behaviors>
+                            </custom1:CustomEntry>
+                        </Grid>
+                    </pancakeView:PancakeView>
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
+                        IsVisible="{Binding ShopAddress.Valid}"
+                        Style="{StaticResource ValidationErrorLabelStyle}"
+                        Text="{Binding ShopAddress.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                        TextColor="IndianRed" />
+
+                    <pancakeView:PancakeView
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="Transparent"
+                        BorderColor="Black"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        HeightRequest="65">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static custom:IconFonts.Paw}"
+                                        Size="30"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+
+                            <!--<Button
+                                Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                BorderColor="Transparent"
+                                Command="{Binding ValidateSpeciesCommand}"
+                                HorizontalOptions="Fill"
+                                Text="{Binding Species.Value}"
+                                TextColor="Black"
+                                VerticalOptions="Center"
+                                Visual="Default">
+                            -->
+                            <!--<Button.Behaviors>
+                                            <behaviors:EventToCommandBehavior Command="{Binding ValidateUserCity}" EventName="Clicked" />
+                                        </Button.Behaviors>-->
+                            <!--
+                            </Button>-->
+
+                            <pancakeView:PancakeView Grid.Column="1">
+                                <custom1:CustomEntry
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Fill"
+                                    IsEnabled="False"
+                                    Placeholder="Password"
+                                    PlaceholderColor="Black"
+                                    Text="{Binding Species.Value}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <pancakeView:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ValidateSpeciesCommand}" />
+                                </pancakeView:PancakeView.GestureRecognizers>
+                            </pancakeView:PancakeView>
+                        </Grid>
+                    </pancakeView:PancakeView>
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
+                        IsVisible="{Binding Species.Valid}"
+                        Style="{StaticResource ValidationErrorLabelStyle}"
+                        Text="{Binding Species.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                        TextColor="IndianRed" />
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource OpenSansExtraBold}"
+                        Style="{StaticResource PageDescription}"
+                        Text="Date Of Inspection"
+                        TextColor="{StaticResource BlackColor}" />
+
+                    <pancakeView:PancakeView
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="Transparent"
+                        BorderColor="Black"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        HeightRequest="65">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static custom:IconFonts.CalendarTimes}"
+                                        Size="30"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+
+                            <DatePicker
+                                Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                Date="{Binding DateOfInspection.Value, StringFormat='dd-MM-yyyy'}"
+                                HorizontalOptions="Fill"
+                                TextColor="Black"
+                                VerticalOptions="Center"
+                                Visual="Material">
+                                <DatePicker.Behaviors>
+                                    <behaviors:EventToCommandBehavior Command="{Binding ValidateDateOfInspectionCommand}" EventName="DateSelected" />
+                                </DatePicker.Behaviors>
+                            </DatePicker>
+                        </Grid>
+                    </pancakeView:PancakeView>
+                    <Label
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
+                        IsVisible="{Binding DateOfInspection.Valid}"
+                        Style="{StaticResource ValidationErrorLabelStyle}"
+                        Text="{Binding DateOfInspection.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                        TextColor="IndianRed" />
+
+                    <pancakeView:PancakeView
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="Transparent"
+                        BorderColor="Black"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        HeightRequest="120">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static custom:IconFonts.Comment}"
+                                        Size="30"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+
+                            <Editor
+                                Grid.Column="1"
+                                AutoSize="TextChanges"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Fill"
+                                IsSpellCheckEnabled="True"
+                                Keyboard="Text"
+                                Placeholder="Comment"
+                                PlaceholderColor="Black"
+                                Text="{Binding Comment.Value, Mode=TwoWay}"
+                                TextColor="Black"
+                                VerticalOptions="FillAndExpand"
+                                Visual="Default">
+                                <Editor.Behaviors>
+                                    <behaviors:EventToCommandBehavior Command="{Binding ValidateCommentCommand}" EventName="TextChanged" />
+                                </Editor.Behaviors>
+                            </Editor>
+                        </Grid>
+                    </pancakeView:PancakeView>
+                    <Label
+                        Grid.Row="10"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        FontAttributes="Bold"
+                        IsVisible="{Binding Comment.Valid}"
+                        Style="{StaticResource ValidationErrorLabelStyle}"
+                        Text="{Binding Comment.Errors, Converter={StaticResource ValidationErrorConverter}}"
+                        TextColor="IndianRed" />
+                    <pancakeView:PancakeView
+                        Grid.Row="11"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="Transparent"
+                        BorderColor="Black"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        HeightRequest="65">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static custom:IconFonts.MapMarkerAlt}"
+                                        Size="30"
+                                        Color="{StaticResource OrangeColor}" />
+                                </Image.Source>
+                            </Image>
+
+                            <Button
+                                Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                BorderColor="Transparent"
+                                Command="{Binding PickComplaintLocationPage}"
+                                HorizontalOptions="Fill"
+                                Text="To setup GPS location click HERE"
+                                TextColor="Black"
+                                VerticalOptions="Center"
+                                Visual="Default">
+                                <!--<Button.Behaviors>
+                                            <behaviors:EventToCommandBehavior Command="{Binding ValidateUserCity}" EventName="Clicked" />
+                                        </Button.Behaviors>-->
+                            </Button>
+                        </Grid>
+                    </pancakeView:PancakeView>
+
+                    <control:HkFileLayout
+                        Title="Upload Pictorial Evidence"
+                        Grid.Row="12"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Margin="10"
+                        AddCommand="{Binding Uploadimagecommand}"
+                        ButtonBackgroundColor="{Binding OrangeColor}"
+                        ButtonText="Upload"
+                        FileClicked="HkFileLayout_FileClicked"
+                        Files="{Binding ComplaintImagesDTOs}"
+                        HasFiles="{Binding HasFiles}" />
+                    <Button
+                        Grid.Row="13"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Padding="5"
+                        BackgroundColor="{StaticResource OrangeColor}"
+                        Command="{Binding SubmitCommand, Mode=TwoWay}"
+                        FontFamily="{StaticResource OpenSansBold}"
+                        IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                        Text="Next"
+                        TextColor="White"
+                        VerticalOptions="End" />
+                </StackLayout>
+
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

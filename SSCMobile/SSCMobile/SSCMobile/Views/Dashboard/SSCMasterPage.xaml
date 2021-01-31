@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="SSCMobile.Views.Dashboard.SSCMasterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:b="clr-namespace:SSCMobile.Behaviors"
+    xmlns:control="clr-namespace:SSCMobile.Controls"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <MasterDetailPage.Master>
+
+        <ContentPage Title="Living Free">
+            <StackLayout Orientation="Vertical">
+                <pancakeView:PancakeView BackgroundGradientStartColor="{StaticResource WhiteColor}" VerticalOptions="FillAndExpand">
+                    <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="4*" />
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Margin="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="80*" />
+
+                                </Grid.ColumnDefinitions>
+                                <pancakeView:PancakeView
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="0"
+                                    VerticalOptions="Center">
+                                    <Image HeightRequest="50" WidthRequest="50">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesome}"
+                                                Glyph="{x:Static custom:IconFonts.User}"
+                                                Size="30"
+                                                Color="{StaticResource OrangeColor}" />
+                                        </Image.Source>
+
+                                    </Image>
+                                    <pancakeView:PancakeView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateUserProfile}" />
+                                    </pancakeView:PancakeView.GestureRecognizers>
+                                </pancakeView:PancakeView>
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                    FontSize="15"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding UserName}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateUserProfile}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource OpenSansSemiBold}"
+                                    Text="{Binding UserEmail}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateUserProfile}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <!--<pancakeView:PancakeView
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    Padding="5"
+                                    VerticalOptions="Center">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesome}"
+                                                Glyph="{x:Static custom:IconFonts.AngleRight}"
+                                                Size="10"
+                                                Color="{StaticResource OrangeColor}" />
+                                        </Image.Source>
+                                    </Image>
+                                </pancakeView:PancakeView>-->
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1">
+
+                            <ListView
+                                HasUnevenRows="False"
+                                ItemsSource="{Binding MenuItems}"
+                                RowHeight="50"
+                                SelectedItem="{Binding SelectedMenuItem}"
+                                SeparatorColor="LightGray"
+                                SeparatorVisibility="Default"
+                                VerticalOptions="FillAndExpand">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20*" />
+                                                    <ColumnDefinition Width="65*" />
+                                                    <ColumnDefinition Width="15*" />
+                                                </Grid.ColumnDefinitions>
+                                                <pancakeView:PancakeView
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="2"
+                                                    Grid.Column="0"
+                                                    Padding="10"
+                                                    VerticalOptions="Center">
+                                                    <Image HeightRequest="70" WidthRequest="70">
+                                                        <Image.Source>
+                                                            <FontImageSource
+                                                                FontFamily="{StaticResource FontAwesome}"
+                                                                Glyph="{Binding Icon}"
+                                                                Size="30"
+                                                                Color="{StaticResource OrangeColor}" />
+                                                        </Image.Source>
+                                                    </Image>
+                                                </pancakeView:PancakeView>
+
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    FontFamily="{StaticResource OpenSansExtraBold}"
+                                                    FontSize="15"
+                                                    HorizontalOptions="Start"
+                                                    Text="{Binding Title}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    FontFamily="{StaticResource OpenSansLightItalic}"
+                                                    Text="{Binding SubTitle}" />
+                                                <!--<pancakeView:PancakeView
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="2"
+                                                    Grid.Column="2"
+                                                    Padding="5"
+                                                    VerticalOptions="Center">
+                                                    <Image>
+                                                        <Image.Source>
+                                                            <FontImageSource
+                                                                FontFamily="{StaticResource FontAwesome}"
+                                                                Glyph="{x:Static custom:IconFonts.AngleRight}"
+                                                                Size="10"
+                                                                Color="{StaticResource OrangeColor}" />
+                                                        </Image.Source>
+                                                    </Image>
+                                                </pancakeView:PancakeView>-->
+                                            </Grid>
+                                            <!--  Main design for our menu items  -->
+                                            <!--<StackLayout
+                                                Padding="20,10,0,10"
+                                                Orientation="Horizontal"
+                                                Spacing="20"
+                                                VerticalOptions="FillAndExpand">
+
+                                                <Image
+                                                    HeightRequest="35"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="35">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="{StaticResource FontAwesome}"
+                                                            Glyph="{Binding Icon}"
+                                                            Size="30"
+                                                            Color="Black" />
+                                                    </Image.Source>
+                                                </Image>
+                                                <Label
+                                                    FontSize="Medium"
+                                                    HorizontalOptions="Center"
+                                                    Text="{Binding Title}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>-->
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                                <ListView.Behaviors>
+                                    <b:EventToCommandBehavior Command="{Binding NavigateCommand}" EventName="ItemTapped" />
+                                </ListView.Behaviors>
+                            </ListView>
+                        </StackLayout>
+                        <!--<StackLayout
+                            Grid.Row="2"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="EndAndExpand">
+                            <Label Text="Version" />
+                        </StackLayout>-->
+
+                    </Grid>
+
+                </pancakeView:PancakeView>
+                <control:ActivityProgressBar IsVisible="{Binding IsBusy, Mode=TwoWay}" />
+            </StackLayout>
+        </ContentPage>
+        <!--<ContentPage Title="Menu">
+
+            <StackLayout Padding="20">
+        -->
+        <!--  TODO: // Update the Layout and add some real menu items  -->
+        <!--
+                <Button
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="HomePage"
+                    Text="HomePage" />
+                <Grid BackgroundColor="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Image Aspect="AspectFill" Source="LogoFiapo.png" />
+                        <StackLayout
+                            Padding="0,20,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                    <StackLayout
+                        Grid.Row="1"
+                        Margin="20,20,20,0"
+                        Spacing="15">
+                        <Button
+                            Command="{Binding NavigateCommand}"
+                            CommandParameter="HomePage"
+                            Text="Home" />
+                        <ContentView BackgroundColor="Gray" HeightRequest="1" />
+                        <Button
+                            Command="{Binding NavigateCommand}"
+                            CommandParameter="SearchPage"
+                            Text="Camera" />
+                        <Button
+                            Command="{Binding NavigateCommand}"
+                            CommandParameter="SettingPage"
+                            Text="Setting" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ContentPage>-->
+    </MasterDetailPage.Master>
+</MasterDetailPage>

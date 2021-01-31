@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Converter="clr-namespace:SSCMobile.Converters"
+    xmlns:behaviors="clr-namespace:SSCMobile.Behaviors"
+    xmlns:prism="http://prismlibrary.com"
+    Title="{Binding Title}"
+    Visual="Material">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:ValidationErrorConverter x:Key="ValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Label Text="Welcome to Xamarin Forms and Prism!" />
+        <Entry
+            Keyboard="Text"
+            Placeholder="Enter full name"
+            PlaceholderColor="#bababa"
+            Text="{Binding UserName.Value, Mode=TwoWay}">
+            <Entry.Behaviors>
+                <behaviors:EventToCommandBehavior Command="{Binding ValidateUserNameCommand}" EventName="TextChanged" />
+            </Entry.Behaviors>
+        </Entry>
+        <Label
+            FontSize="12"
+            Style="{StaticResource ValidationErrorLabelStyle}"
+            Text="{Binding UserName.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+        <Button Command="{Binding LoginCommand}" Text="Login" />
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="SSCMobile.Views.Dashboard.DashBoardTabbedPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:local="clr-namespace:SSCMobile.Views.Dashboard"
+    xmlns:prism="http://prismlibrary.com"
+    Title="Home"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BarBackgroundColor="{StaticResource WhiteColor}"
+    BarTextColor="{StaticResource OffWhiteColor}"
+    Visual="Material">
+
+    <local:HomePage>
+        <local:HomePage.IconImageSource>
+            <FontImageSource
+                FontFamily="{StaticResource FontAwesome}"
+                Glyph="{x:Static custom:IconFonts.Home}"
+                Size="50"
+                Color="Black" />
+        </local:HomePage.IconImageSource>
+    </local:HomePage>
+
+    <local:ComplaintStatusPage>
+        <local:ComplaintStatusPage.IconImageSource>
+            <FontImageSource
+                FontFamily="{StaticResource FontAwesome}"
+                Glyph="{x:Static custom:IconFonts.ArrowUp}"
+                Size="50"
+                Color="Black" />
+        </local:ComplaintStatusPage.IconImageSource>
+    </local:ComplaintStatusPage>
+    <local:SearchPage>
+        <local:SearchPage.IconImageSource>
+            <FontImageSource
+                FontFamily="{StaticResource FontAwesome}"
+                Glyph="{x:Static custom:IconFonts.Search}"
+                Size="50"
+                Color="Black" />
+        </local:SearchPage.IconImageSource>
+    </local:SearchPage>
+    <!--<local:CameraPage>
+        <local:CameraPage.IconImageSource>
+            <FontImageSource
+                FontFamily="{StaticResource FontAwesome}"
+                Glyph="{x:Static custom:IconFonts.Camera}"
+                Size="50"
+                Color="Black" />
+        </local:CameraPage.IconImageSource>
+    </local:CameraPage>-->
+    <!--<local:SettingPage>
+        <local:SettingPage.IconImageSource>
+            <FontImageSource
+                FontFamily="{StaticResource FontAwesome}"
+                Glyph="{x:Static custom:IconFonts.UserCog}"
+                Size="50"
+                Color="Black" />
+        </local:SettingPage.IconImageSource>
+    </local:SettingPage>-->
+</TabbedPage>

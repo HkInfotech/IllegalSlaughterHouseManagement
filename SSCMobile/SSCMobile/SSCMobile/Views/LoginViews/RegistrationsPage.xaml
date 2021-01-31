@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SSCMobile.Views.LoginViews.RegistrationsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Converter="clr-namespace:SSCMobile.Converters"
+    xmlns:behaviors="clr-namespace:SSCMobile.Behaviors"
+    xmlns:custom="clr-namespace:SSCMobile;assembly=SSCMobile"
+    xmlns:custom1="clr-namespace:SSCMobile.CustomControl"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    Title="Register"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource backgroundColor}"
+    NavigationPage.HasNavigationBar="true"
+    Visual="Material"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:ValidationErrorConverter x:Key="ValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <AbsoluteLayout
+            BackgroundColor="Transparent"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                Padding="20"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <StackLayout IsClippedToBounds="True">
+                    <!--<Image
+                        Margin="0,0,0,10"
+                        HeightRequest="100"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="LogoFiapo.png"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="150" />-->
+                    <Label
+                        Margin="0,0,0,10"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource OpenSansBold}"
+                        FontSize="Small"
+                        HorizontalOptions="StartAndExpand"
+                        HorizontalTextAlignment="Start"
+                        LineBreakMode="WordWrap"
+                        Style="{StaticResource PageTitle}"
+                        Text="Living Free is a free app to register complaint against illegal mean shop to the concern govt. authorities. Fill in registration form below to create your free account"
+                        TextColor="Black" />
+                    <ScrollView>
+
+                        <Grid
+                            Padding="10"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <pancakeView:PancakeView
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                BackgroundColor="Transparent"
+                                BorderColor="Black"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                HeightRequest="65">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                                Glyph="{x:Static custom:IconFonts.User}"
+                                                Size="30"
+                                                Color="{StaticResource OrangeColor}" />
+                                        </Image.Source>
+                                    </Image>
+                                    <custom1:CustomEntry
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Fill"
+                                        Placeholder="Name"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding UserName.Value}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center">
+                                        <custom1:CustomEntry.Behaviors>
+                                            <behaviors:EventToCommandBehavior Command="{Binding ValidateUserNameCommand}" EventName="TextChanged" />
+                                        </custom1:CustomEntry.Behaviors>
+                                    </custom1:CustomEntry>
+                                </Grid>
+                            </pancakeView:PancakeView>
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                FontAttributes="Bold"
+                                IsVisible="{Binding UserName.Valid}"
+                                Style="{StaticResource ValidationErrorLabelStyle}"
+                                Text="{Binding UserName.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+
+                            <pancakeView:PancakeView
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                BackgroundColor="Transparent"
+                                BorderColor="Black"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                HeightRequest="65">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                                Glyph="{x:Static custom:IconFonts.Mobile}"
+                                                Size="30"
+                                                Color="{StaticResource OrangeColor}" />
+                                        </Image.Source>
+                                    </Image>
+                                    <custom1:CustomEntry
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Fill"
+                                        Keyboard="Telephone"
+                                        Placeholder="Mobile"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding UserMobile.Value}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center">
+                                        <custom1:CustomEntry.Behaviors>
+                                            <behaviors:EventToCommandBehavior Command="{Binding ValidateUserMobile}" EventName="TextChanged" />
+                                        </custom1:CustomEntry.Behaviors>
+                                    </custom1:CustomEntry>
+                                </Grid>
+                            </pancakeView:PancakeView>
+
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                FontAttributes="Bold"
+                                IsVisible="{Binding UserMobile.Valid}"
+                                Style="{StaticResource ValidationErrorLabelStyle}"
+                                Text="{Binding UserMobile.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+
+                            <pancakeView:PancakeView
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                BackgroundColor="Transparent"
+                                BorderColor="Black"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                HeightRequest="65">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                                Glyph="{x:Static custom:IconFonts.Envelope}"
+                                                Size="30"
+                                                Color="{StaticResource OrangeColor}" />
+                                        </Image.Source>
+                                    </Image>
+                                    <custom1:CustomEntry
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Fill"
+                                        Keyboard="Email"
+                                        Placeholder="Email"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding UserEmail.Value}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center">
+                                        <custom1:CustomEntry.Behaviors>
+                                            <behaviors:EventToCommandBehavior Command="{Binding ValidateUserEmail}" EventName="TextChanged" />
+                                        </custom1:CustomEntry.Behaviors>
+                                    </custom1:CustomEntry>
+                                </Grid>
+                            </pancakeView:PancakeView>
+
+                            <Label
+                                Grid.Row="6"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                FontAttributes="Bold"
+                                IsVisible="{Binding UserEmail.Valid}"
+                                Style="{StaticResource ValidationErrorLabelStyle}"
+                                Text="{Binding UserEmail.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+
+                            <pancakeView:PancakeView
+                                Grid.Row="7"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                BackgroundColor="Transparent"
+                                BorderColor="Black"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                HeightRequest="65">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                                Glyph="{x:Static custom:IconFonts.City}"
+                                                Size="24"
+                                                Color="{StaticResource OrangeColor}" />
+                                        </Image.Source>
+                                    </Image>
+                                    <!--<custom1:CustomEntry
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Fill"
+                                        Placeholder="Email"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding UserEmail.Value}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center">
+                                        <custom1:CustomEntry.Behaviors>
+                                            <behaviors:EventToCommandBehavior Command="{Binding ValidateUserEmail}" EventName="TextChanged" />
+                                        </custom1:CustomEntry.Behaviors>
+                                    </custom1:CustomEntry>-->
+                                    <!--<Button
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        BorderColor="Transparent"
+                                        Command="{Binding ValidateUserCity}"
+                                        HorizontalOptions="Fill"
+                                        Text="{Binding UserCity.Value}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center"
+                                        Visual="Default">
+                                    -->
+                                    <!--<Button.Behaviors>
+                                            <behaviors:EventToCommandBehavior Command="{Binding ValidateUserCity}" EventName="Clicked" />
+                                        </Button.Behaviors>-->
+                                    <!--
+                                    </Button>-->
+                                    <pancakeView:PancakeView Grid.Column="1">
+                                        <custom1:CustomEntry
+                                            BackgroundColor="Transparent"
+                                            HorizontalOptions="Fill"
+                                            IsEnabled="False"
+                                            PlaceholderColor="Black"
+                                            Text="{Binding UserCity.Value}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center" />
+                                        <pancakeView:PancakeView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ValidateUserCity}" />
+                                        </pancakeView:PancakeView.GestureRecognizers>
+                                    </pancakeView:PancakeView>
+                                </Grid>
+                            </pancakeView:PancakeView>
+
+                            <Label
+                                Grid.Row="8"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                FontAttributes="Bold"
+                                IsVisible="{Binding UserCity.Valid}"
+                                Style="{StaticResource ValidationErrorLabelStyle}"
+                                Text="{Binding UserCity.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+
+                            <pancakeView:PancakeView
+                                Grid.Row="9"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                BackgroundColor="Transparent"
+                                BorderColor="Black"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                HeightRequest="65">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                                Glyph="{x:Static custom:IconFonts.Lock}"
+                                                Size="30"
+                                                Color="{StaticResource OrangeColor}" />
+                                        </Image.Source>
+                                    </Image>
+                                    <custom1:CustomEntry
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Fill"
+                                        IsPassword="True"
+                                        Keyboard="Default"
+                                        Placeholder="Password"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding UserPassword.Value}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center">
+                                        <custom1:CustomEntry.Behaviors>
+                                            <behaviors:EventToCommandBehavior Command="{Binding ValidatePasswordCommand}" EventName="TextChanged" />
+                                        </custom1:CustomEntry.Behaviors>
+                                    </custom1:CustomEntry>
+                                </Grid>
+                            </pancakeView:PancakeView>
+
+                            <Label
+                                Grid.Row="10"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                FontAttributes="Bold"
+                                IsVisible="{Binding UserPassword.Valid}"
+                                Style="{StaticResource ValidationErrorLabelStyle}"
+                                Text="{Binding UserPassword.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+                            <pancakeView:PancakeView
+                                Grid.Row="11"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                BackgroundColor="Transparent"
+                                BorderColor="Black"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                HeightRequest="65">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                                Glyph="{x:Static custom:IconFonts.Lock}"
+                                                Size="30"
+                                                Color="{StaticResource OrangeColor}" />
+                                        </Image.Source>
+                                    </Image>
+                                    <custom1:CustomEntry
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Fill"
+                                        IsPassword="True"
+                                        Keyboard="Default"
+                                        Placeholder="Confirm Password"
+                                        PlaceholderColor="Black"
+                                        Text="{Binding ConfirmPassword.Value}"
+                                        TextColor="Black"
+                                        VerticalOptions="Center">
+                                        <custom1:CustomEntry.Behaviors>
+                                            <behaviors:EventToCommandBehavior Command="{Binding ValidateConfirmPasswordCommand}" EventName="TextChanged" />
+                                        </custom1:CustomEntry.Behaviors>
+                                    </custom1:CustomEntry>
+                                </Grid>
+                            </pancakeView:PancakeView>
+
+                            <Label
+                                Grid.Row="12"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                FontAttributes="Bold"
+                                IsVisible="{Binding ConfirmPassword.Valid}"
+                                Style="{StaticResource ValidationErrorLabelStyle}"
+                                Text="{Binding ConfirmPassword.Errors, Converter={StaticResource ValidationErrorConverter}}" />
+
+                            <pancakeView:PancakeView
+                                Grid.Row="13"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Margin="5"
+                                Padding="0"
+                                BorderThickness="5"
+                                CornerRadius="10">
+                                <Button
+                                    BackgroundColor="{StaticResource OrangeColor}"
+                                    Command="{Binding RegisterCommand, Mode=TwoWay}"
+                                    FontFamily="{StaticResource OpenSansBold}"
+                                    IsEnabled="{Binding IsPrivacyPolicyCheck.Value, Mode=TwoWay}"
+                                    Text="Register"
+                                    TextColor="White" />
+                            </pancakeView:PancakeView>
+                            <StackLayout
+                                Grid.Row="14"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                HorizontalOptions="Center"
+                                Orientation="Horizontal"
+                                VerticalOptions="StartAndExpand">
+                                <CheckBox IsChecked="{Binding IsPrivacyPolicyCheck}" Color="{StaticResource OrangeColor}">
+                                    <CheckBox.Behaviors>
+                                        <prism:EventToCommandBehavior Command="{Binding OnPrivacyPolicyChangeCommand}" EventName="CheckedChanged" />
+                                    </CheckBox.Behaviors>
+                                </CheckBox>
+
+                                <Label
+                                    FontFamily="{StaticResource OpenSansBold}"
+                                    HorizontalOptions="Center"
+                                    Style="{StaticResource PageDescription}"
+                                    VerticalOptions="End">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="By continuing in you agree to our" />
+                                            <Span Text=" " />
+                                            <Span
+                                                Text="Terms and Conditions And Privacy Policy"
+                                                TextColor="Blue"
+                                                TextDecorations="Underline">
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding TermsandContionClick}" />
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <!--<Label
+                                Grid.Row="14"
+                                Grid.Column="0"
+                                HorizontalOptions="Start"
+                                Text="Register"
+                                TextColor="Black">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label
+                                Grid.Row="14"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                HorizontalOptions="End"
+                                Text="Recover"
+                                TextColor="Black">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>-->
+                        </Grid>
+
+                    </ScrollView>
+
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
